@@ -21,7 +21,7 @@ public class TranslationDictionary {
     }
 
     @PostMapping("trans")
-    public String translation(@RequestParam("txtSearch") String txtSearch, Model model) {
+    public String translation(@RequestParam(value = "txtSearch") String txtSearch, Model model) {
         Map<String, String> dictionary = new LinkedHashMap<>();
         dictionary.put("search", "tim kiem");
         dictionary.put("fly", "bay");
