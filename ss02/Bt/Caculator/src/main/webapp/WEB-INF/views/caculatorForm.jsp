@@ -18,7 +18,7 @@
     <table>
       <tr>
         <td>First operand: </td>
-        <td><input name="first-operand" type="text"/></td>
+        <td><input name="firstNumber" type="text"/></td>
       </tr>
       <tr>
         <td>Operator: </td>
@@ -33,7 +33,7 @@
       </tr>
       <tr>
         <td>Second operand: </td>
-        <td><input name="second-operand" type="text"/></td>
+        <td><input name="secondNumber" type="text"/></td>
       </tr>
       <tr>
         <td></td>

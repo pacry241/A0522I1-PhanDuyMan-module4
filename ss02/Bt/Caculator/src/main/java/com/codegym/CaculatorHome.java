@@ -19,7 +19,7 @@ public class CaculatorHome {
     }
 
     @PostMapping("")
-    public String caculator(@RequestParam("first-operand") double firstNumber, @RequestParam("second-operand") double secondNumber,
+    public String caculator(@RequestParam("firstNumber") double firstNumber, @RequestParam("secondNumber") double secondNumber,
                             @RequestParam("operator") String operator, Model model, RedirectAttributes redirectAttributes) {
         String result = "";
 
