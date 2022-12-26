@@ -24,8 +24,8 @@ public class MedicalController {
 
     @GetMapping("/add")
     String showToKhaiYTe(Model model){
-        model.addAttribute("toKhaiYTe",new Medical());
-        model.addAttribute("phuongTiens",stringsVehicle);
+        model.addAttribute("medical",new Medical());
+        model.addAttribute("Vehicle",stringsVehicle);
         return "home";
     }
 

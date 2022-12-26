@@ -15,7 +15,7 @@
 <body>
 <h3>Tờ Khai báo y tế</h3>
 
-<form:form modelAttribute="toKhaiYTe" action="/add" method="post">
+<form:form modelAttribute="medical" action="/add" method="post">
   <fieldset>
     <legend>Tờ khai ý tế</legend>
     <table>
@@ -62,7 +62,7 @@
       </tr>
       <tr>
         <td><form:label path="phuongTien">Thông tin đi lại:(*) </form:label></td>
-        <td><form:radiobuttons path="phuongTien" items="${phuongTiens}"/></td>
+        <td><form:radiobuttons path="phuongTien" items="${Vehicle}"/></td>
       </tr>
       <tr>
         <td><form:label path="soHieu">Số hiệu phương tiện:(*) </form:label></td>
