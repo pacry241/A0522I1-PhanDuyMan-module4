@@ -20,13 +20,13 @@
     <legend>Tờ khai ý tế</legend>
     <table>
       <tr>
-        <td><form:label path="hoTen">Họ tên (ghi chữ IN HOA):(*) </form:label></td>
-        <td><form:input path="hoTen"/></td>
+        <td><form:label path="name">Họ tên (ghi chữ IN HOA):(*) </form:label></td>
+        <td><form:input path="name"/></td>
       </tr>
       <tr>
-        <td><form:label path="namSinh">Năm Sinh </form:label></td>
+        <td><form:label path="yearOfBirth">Năm Sinh </form:label></td>
         <td>
-          <form:select  path="namSinh">
+          <form:select  path="yearOfBirth">
             <form:option value="NONE"> --SELECT--</form:option>
             <c:forEach step="1" begin="1990" end="2023" var="item">
               <form:option value="${item}">${item}</form:option>
@@ -35,9 +35,9 @@
         </td>
       </tr>
       <tr>
-        <td><form:label path="gioiTinh">Giới Tính: </form:label></td>
+        <td><form:label path="gender">Giới Tính: </form:label></td>
         <td>
-          <form:select  path="gioiTinh">
+          <form:select  path="gender">
             <form:option value="NONE"> --SELECT--</form:option>
             <form:option value="Nam">Nam</form:option>
             <form:option value="Nu">Nu</form:option>
@@ -45,9 +45,9 @@
         </td>
       </tr>
       <tr>
-        <td><form:label path="quocTich">Quốc Tịch:</form:label></td>
+        <td><form:label path="nationality">Quốc Tịch:</form:label></td>
         <td>
-          <form:select  path="quocTich">
+          <form:select  path="nationality">
             <form:option value="NONE"> --SELECT--</form:option>
             <form:option value="VietNam">Việt Nam</form:option>
             <form:option value="ThaiLan">Thái Lan</form:option>
@@ -57,25 +57,25 @@
         </td>
       </tr>
       <tr>
-        <td><form:label path="hoChieu">Hộ chiếu:(*) </form:label></td>
-        <td><form:input path="hoChieu"/></td>
+        <td><form:label path="passport">Hộ chiếu:(*) </form:label></td>
+        <td><form:input path="passport"/></td>
       </tr>
       <tr>
-        <td><form:label path="phuongTien">Thông tin đi lại:(*) </form:label></td>
-        <td><form:radiobuttons path="phuongTien" items="${Vehicle}"/></td>
+        <td><form:label path="vehicle">Thông tin đi lại:(*) </form:label></td>
+        <td><form:radiobuttons path="vehicle" items="${Vehicle}"/></td>
       </tr>
       <tr>
-        <td><form:label path="soHieu">Số hiệu phương tiện:(*) </form:label></td>
-        <td><form:input path="soHieu"/></td>
+        <td><form:label path="number">Số hiệu phương tiện:(*) </form:label></td>
+        <td><form:input path="number"/></td>
       </tr>
       <tr>
-        <td><form:label path="soGhe">Số ghế:(*) </form:label></td>
-        <td><form:input path="soGhe"/></td>
+        <td><form:label path="seats">Số ghế:(*) </form:label></td>
+        <td><form:input path="seats"/></td>
       </tr>
       <tr>
-        <td><form:label path="ngayKhoiHanh">Ngày khởi hành (ngày):(*) </form:label></td>
+        <td><form:label path="departureDay">Ngày khởi hành (ngày):(*) </form:label></td>
         <td>
-          <form:select  path="ngayKhoiHanh">
+          <form:select  path="departureDay">
             <c:forEach step="1" begin="1" end="31" var="item">
               <form:option value="${item}">${item}</form:option>
             </c:forEach>
@@ -83,9 +83,9 @@
         </td>
       </tr>
       <tr>
-        <td><form:label path="thangKhoiHanh">Tháng khởi hành (tháng):(*) </form:label></td>
+        <td><form:label path="departureMonth">Tháng khởi hành (tháng):(*) </form:label></td>
         <td>
-          <form:select  path="thangKhoiHanh">
+          <form:select  path="departureMonth">
             <c:forEach step="1" begin="1" end="12" var="item">
               <form:option value="${item}">${item}</form:option>
             </c:forEach>
@@ -93,9 +93,9 @@
         </td>
       </tr>
       <tr>
-        <td><form:label path="namKhoiHanh">Năm khởi hành (năm):(*) </form:label></td>
+        <td><form:label path="departureYear">Năm khởi hành (năm):(*) </form:label></td>
         <td>
-          <form:select  path="namKhoiHanh">
+          <form:select  path="departureYear">
             <c:forEach step="1" begin="2015" end="2022" var="item">
               <form:option value="${item}">${item}</form:option>
             </c:forEach>
@@ -103,9 +103,9 @@
         </td>
       </tr>
       <tr>
-        <td><form:label path="ngayKetThuc">Ngày kết thúc (ngày):(*) </form:label></td>
+        <td><form:label path="endDay">Ngày kết thúc (ngày):(*) </form:label></td>
         <td>
-          <form:select  path="ngayKetThuc">
+          <form:select  path="endDay">
             <c:forEach step="1" begin="1" end="31" var="item">
               <form:option value="${item}">${item}</form:option>
             </c:forEach>
@@ -113,9 +113,9 @@
         </td>
       </tr>
       <tr>
-        <td><form:label path="thangKetThuc">Tháng kết thúc (tháng):(*) </form:label></td>
+        <td><form:label path="endMonth">Tháng kết thúc (tháng):(*) </form:label></td>
         <td>
-          <form:select  path="thangKetThuc">
+          <form:select  path="endMonth">
             <c:forEach step="1" begin="1" end="12" var="item">
               <form:option value="${item}">${item}</form:option>
             </c:forEach>
@@ -123,9 +123,9 @@
         </td>
       </tr>
       <tr>
-        <td><form:label path="namKetThuc">Năm kết thúc (năm):(*) </form:label></td>
+        <td><form:label path="endYear">Năm kết thúc (năm):(*) </form:label></td>
         <td>
-          <form:select  path="namKetThuc">
+          <form:select  path="endYear">
             <c:forEach step="1" begin="2015" end="2022" var="item">
               <form:option value="${item}">${item}</form:option>
             </c:forEach>
@@ -133,17 +133,17 @@
         </td>
       </tr>
       <tr>
-        <td><form:label path="diThanhPhoNao">Trong 14 ngày qua anh chị có đến thành phố nào khum:(*) </form:label></td>
-        <td><form:textarea path="diThanhPhoNao"/></td>
+        <td><form:label path="destination">Trong 14 ngày qua anh chị có đến thành phố nào khum:(*) </form:label></td>
+        <td><form:textarea path="destination"/></td>
       </tr>
       <tr>
         <td colspan="2"><h1>Địa chỉ liên lạc</h1></td>
       </tr>
       <tr>
 
-        <td><form:label path="tinh">Tỉnh/Thành:(*) </form:label></td>
+        <td><form:label path="conscious">Tỉnh/Thành:(*) </form:label></td>
         <td>
-          <form:select  path="tinh">
+          <form:select  path="conscious">
             <form:option value="NONE"> --SELECT--</form:option>
             <form:option value="75">Huế</form:option>
             <form:option value="43">Đà Nẵng</form:option>
@@ -153,9 +153,9 @@
         </td>
       </tr>
       <tr>
-        <td><form:label path="quan">Tỉnh/Thành:(*) </form:label></td>
+        <td><form:label path="district">Tỉnh/Thành:(*) </form:label></td>
         <td>
-          <form:select  path="quan">
+          <form:select  path="district">
             <form:option value="NONE"> --SELECT--</form:option>
             <form:option value="NguHanhSon">Ngũ Hành SƠn</form:option>
             <form:option value="HaiChau">Hải Châu</form:option>
@@ -165,9 +165,9 @@
         </td>
       </tr>
       <tr>
-        <td><form:label path="phuong">Phường/Xã:(*) </form:label></td>
+        <td><form:label path="wards">Phường/Xã:(*) </form:label></td>
         <td>
-          <form:select  path="phuong">
+          <form:select  path="wards">
             <form:option value="NONE"> --SELECT--</form:option>
             <form:option value="HoaHai">Hòa Hải</form:option>
             <form:option value="HoaQuy">Hòa Quý</form:option>
@@ -177,12 +177,12 @@
         </td>
       </tr>
       <tr>
-        <td><form:label path="diaChi">Địa chỉ nơi ở:(*) </form:label></td>
-        <td><form:input path="diaChi"/></td>
+        <td><form:label path="address">Địa chỉ nơi ở:(*) </form:label></td>
+        <td><form:input path="address"/></td>
       </tr>
       <tr>
-        <td><form:label path="dienThoai">Điện Thoại:(*) </form:label></td>
-        <td><form:input path="dienThoai"/></td>
+        <td><form:label path="phone">Điện Thoại:(*) </form:label></td>
+        <td><form:input path="phone"/></td>
       </tr>
       <tr>
         <td><form:label path="email">Email:(*) </form:label></td>
@@ -193,76 +193,76 @@
       </tr>
       <tr>
 
-        <td><form:label path="sot">Sốt:(*) </form:label></td>
+        <td><form:label path="fever">Sốt:(*) </form:label></td>
         <td>
-          <form:radiobutton path="sot" value="true" label="Có"/>
-          <form:radiobutton path="sot" value="false" label="Không"/>
+          <form:radiobutton path="fever" value="true" label="Có"/>
+          <form:radiobutton path="fever" value="false" label="Không"/>
         </td>
       </tr>
       <tr>
-        <td><form:label path="ho">Ho:(*) </form:label></td>
+        <td><form:label path="cough">Ho:(*) </form:label></td>
         <td>
-          <form:radiobutton path="ho" value="true" label="Có"/>
-          <form:radiobutton path="ho" value="false" label="Không"/>
+          <form:radiobutton path="cough" value="true" label="Có"/>
+          <form:radiobutton path="cough" value="false" label="Không"/>
         </td>
       </tr>
       <tr>
-        <td><form:label path="khoTho">Khó thở:(*) </form:label></td>
+        <td><form:label path="sultry">Khó thở:(*) </form:label></td>
         <td>
-          <form:radiobutton path="khoTho" value="true" label="Có"/>
-          <form:radiobutton path="khoTho" value="false" label="Không"/>
+          <form:radiobutton path="sultry" value="true" label="Có"/>
+          <form:radiobutton path="sultry" value="false" label="Không"/>
         </td>
       </tr>
       <tr>
-        <td><form:label path="dauHong">Đau họng:(*) </form:label></td>
+        <td><form:label path="soreThroat">Đau họng:(*) </form:label></td>
         <td>
-          <form:radiobutton path="dauHong" value="true" label="Có"/>
-          <form:radiobutton path="dauHong" value="false" label="Không"/>
+          <form:radiobutton path="soreThroat" value="true" label="Có"/>
+          <form:radiobutton path="soreThroat" value="false" label="Không"/>
         </td>
       </tr>
       <tr>
-        <td><form:label path="non">Nôn/ buồn nôn:(*) </form:label></td>
+        <td><form:label path="vomit">Nôn/ buồn nôn:(*) </form:label></td>
         <td>
-          <form:radiobutton path="non" value="true" label="Có"/>
-          <form:radiobutton path="non" value="false" label="Không"/>
+          <form:radiobutton path="vomit" value="true" label="Có"/>
+          <form:radiobutton path="vomit" value="false" label="Không"/>
         </td>
       </tr>
       <tr>
-        <td><form:label path="tieuChay">Tiêu chảy:(*) </form:label></td>
+        <td><form:label path="diarrhea">Tiêu chảy:(*) </form:label></td>
         <td>
-          <form:radiobutton path="tieuChay" value="true" label="Có"/>
-          <form:radiobutton path="tieuChay" value="false" label="Không"/>
+          <form:radiobutton path="diarrhea" value="true" label="Có"/>
+          <form:radiobutton path="diarrhea" value="false" label="Không"/>
         </td>
       </tr>
       <tr>
-        <td><form:label path="xuatHuyet">Xuất huyết ngoài da:(*) </form:label></td>
+        <td><form:label path="hemorrhage">Xuất huyết ngoài da:(*) </form:label></td>
         <td>
-          <form:radiobutton path="xuatHuyet" value="true" label="Có"/>
-          <form:radiobutton path="xuatHuyet" value="false" label="Không"/>
+          <form:radiobutton path="hemorrhage" value="true" label="Có"/>
+          <form:radiobutton path="hemorrhage" value="false" label="Không"/>
         </td>
       </tr>
       <tr>
-        <td><form:label path="noiBan">Nổi ban ngoài da:(*) </form:label></td>
+        <td><form:label path="rash">Nổi ban ngoài da:(*) </form:label></td>
         <td>
-          <form:radiobutton path="noiBan" value="true" label="Có"/>
-          <form:radiobutton path="noiBan" value="false" label="Không"/>
+          <form:radiobutton path="rash" value="true" label="Có"/>
+          <form:radiobutton path="rash" value="false" label="Không"/>
         </td>
       </tr>
       <tr>
         <h1>Lịch sử phơi nhiễm trong 14 ngày qua</h1>
-        <td><form:label path="trangTrai">Đến trang trại chăn nuôi/ chợ buôn bán
+        <td><form:label path="farm">Đến trang trại chăn nuôi/ chợ buôn bán
           động vật sống / cở sở mổ giết động vật/ tiếp xúc động vật:(*) </form:label></td>
         <td>
-          <form:radiobutton path="trangTrai" value="true" label="Có"/>
-          <form:radiobutton path="trangTrai" value="false" label="Không"/>
+          <form:radiobutton path="farm" value="true" label="Có"/>
+          <form:radiobutton path="farm" value="false" label="Không"/>
         </td>
       </tr>
       <tr>
-        <td><form:label path="tiepXuc">Tiếp xúc gần (<2m) với người mắc bệnh
+        <td><form:label path="contact">Tiếp xúc gần (<2m) với người mắc bệnh
           viêm đường hô hấp do nCoV (*)</form:label></td>
         <td>
-          <form:radiobutton path="tiepXuc" value="true" label="Có"/>
-          <form:radiobutton path="tiepXuc" value="false" label="Không"/>
+          <form:radiobutton path="contact" value="true" label="Có"/>
+          <form:radiobutton path="contact" value="false" label="Không"/>
         </td>
       </tr>
       <tr>

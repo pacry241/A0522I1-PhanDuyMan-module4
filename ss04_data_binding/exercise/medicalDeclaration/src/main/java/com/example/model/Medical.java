@@ -1,233 +1,233 @@
 package com.example.model;
 
 public class Medical {
-    private String hoTen;
-    private String namSinh;
-    private String gioiTinh;
-    private String quocTich;
-    private String hoChieu;
-    private String phuongTien;
-    private String soHieu;
-    private int soGhe;
-    private int ngayKhoiHanh;
-    private int thangKhoiHanh;
-    private int namKhoiHanh;
-    private int ngayKetThuc;
-    private int thangKetThuc;
-    private int NamKetThuc;
-    private String diThanhPhoNao;
-    private String tinh;
-    private String quan;
-    private String phuong;
-    private String diaChi;
-    private int dienThoai;
+    private String name;
+    private String yearOfBirth;
+    private String gender;
+    private String nationality;
+    private String passport;
+    private String vehicle;
+    private String number;
+    private int seats;
+    private int departureDay;
+    private int departureMonth;
+    private int departureYear;
+    private int endDay;
+    private int endMonth;
+    private int endYear;
+    private String destination;
+    private String conscious;
+    private String district;
+    private String wards;
+    private String address;
+    private int phone;
     private String email;
-    private boolean sot;
-    private boolean ho;
-    private boolean khoTho;
-    private boolean dauHong;
-    private boolean non;
-    private boolean tieuChay;
-    private boolean xuatHuyet;
-    private boolean noiBan;
-    private boolean trangTrai;
-    private boolean tiepXuc;
+    private boolean fever;
+    private boolean cough;
+    private boolean sultry;
+    private boolean soreThroat;
+    private boolean vomit;
+    private boolean diarrhea;
+    private boolean hemorrhage;
+    private boolean rash;
+    private boolean farm;
+    private boolean contact;
 
     public Medical() {
     }
 
-    public Medical(String hoTen, String namSinh, String gioiTinh, String quocTich, String hoChieu, String phuongTien, String soHieu, int soGhe, int ngayKhoiHanh, int thangKhoiHanh, int namKhoiHanh, int ngayKetThuc, int thangKetThuc, int namKetThuc, String diThanhPhoNao, String tinh, String quan, String phuong, String diaChi, int dienThoai, String email, boolean sot, boolean ho, boolean khoTho, boolean dauHong, boolean non, boolean tieuChay, boolean xuatHuyet, boolean noiBan, boolean trangTrai, boolean tiepXuc) {
-        this.hoTen = hoTen;
-        this.namSinh = namSinh;
-        this.gioiTinh = gioiTinh;
-        this.quocTich = quocTich;
-        this.hoChieu = hoChieu;
-        this.phuongTien = phuongTien;
-        this.soHieu = soHieu;
-        this.soGhe = soGhe;
-        this.ngayKhoiHanh = ngayKhoiHanh;
-        this.thangKhoiHanh = thangKhoiHanh;
-        this.namKhoiHanh = namKhoiHanh;
-        this.ngayKetThuc = ngayKetThuc;
-        this.thangKetThuc = thangKetThuc;
-        NamKetThuc = namKetThuc;
-        this.diThanhPhoNao = diThanhPhoNao;
-        this.tinh = tinh;
-        this.quan = quan;
-        this.phuong = phuong;
-        this.diaChi = diaChi;
-        this.dienThoai = dienThoai;
+    public Medical(String name, String yearOfBirth, String gender, String nationality, String passport, String vehicle, String number, int seats, int departureDay, int departureMonth, int departureYear, int endDay, int endMonth, int endYear, String destination, String conscious, String district, String wards, String address, int phone, String email, boolean fever, boolean cough, boolean sultry, boolean soreThroat, boolean vomit, boolean diarrhea, boolean hemorrhage, boolean rash, boolean farm, boolean contact) {
+        this.name = name;
+        this.yearOfBirth = yearOfBirth;
+        this.gender = gender;
+        this.nationality = nationality;
+        this.passport = passport;
+        this.vehicle = vehicle;
+        this.number = number;
+        this.seats = seats;
+        this.departureDay = departureDay;
+        this.departureMonth = departureMonth;
+        this.departureYear = departureYear;
+        this.endDay = endDay;
+        this.endMonth = endMonth;
+        this.endYear = endYear;
+        this.destination = destination;
+        this.conscious = conscious;
+        this.district = district;
+        this.wards = wards;
+        this.address = address;
+        this.phone = phone;
         this.email = email;
-        this.sot = sot;
-        this.ho = ho;
-        this.khoTho = khoTho;
-        this.dauHong = dauHong;
-        this.non = non;
-        this.tieuChay = tieuChay;
-        this.xuatHuyet = xuatHuyet;
-        this.noiBan = noiBan;
-        this.trangTrai = trangTrai;
-        this.tiepXuc = tiepXuc;
+        this.fever = fever;
+        this.cough = cough;
+        this.sultry = sultry;
+        this.soreThroat = soreThroat;
+        this.vomit = vomit;
+        this.diarrhea = diarrhea;
+        this.hemorrhage = hemorrhage;
+        this.rash = rash;
+        this.farm = farm;
+        this.contact = contact;
     }
 
-    public String getHoTen() {
-        return hoTen;
+    public String getName() {
+        return name;
     }
 
-    public void setHoTen(String hoTen) {
-        this.hoTen = hoTen;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public String getNamSinh() {
-        return namSinh;
+    public String getYearOfBirth() {
+        return yearOfBirth;
     }
 
-    public void setNamSinh(String namSinh) {
-        this.namSinh = namSinh;
+    public void setYearOfBirth(String yearOfBirth) {
+        this.yearOfBirth = yearOfBirth;
     }
 
-    public String getGioiTinh() {
-        return gioiTinh;
+    public String getGender() {
+        return gender;
     }
 
-    public void setGioiTinh(String gioiTinh) {
-        this.gioiTinh = gioiTinh;
+    public void setGender(String gender) {
+        this.gender = gender;
     }
 
-    public String getQuocTich() {
-        return quocTich;
+    public String getNationality() {
+        return nationality;
     }
 
-    public void setQuocTich(String quocTich) {
-        this.quocTich = quocTich;
+    public void setNationality(String nationality) {
+        this.nationality = nationality;
     }
 
-    public String getHoChieu() {
-        return hoChieu;
+    public String getPassport() {
+        return passport;
     }
 
-    public void setHoChieu(String hoChieu) {
-        this.hoChieu = hoChieu;
+    public void setPassport(String passport) {
+        this.passport = passport;
     }
 
-    public String getPhuongTien() {
-        return phuongTien;
+    public String getVehicle() {
+        return vehicle;
     }
 
-    public void setPhuongTien(String phuongTien) {
-        this.phuongTien = phuongTien;
+    public void setVehicle(String vehicle) {
+        this.vehicle = vehicle;
     }
 
-    public String getSoHieu() {
-        return soHieu;
+    public String getNumber() {
+        return number;
     }
 
-    public void setSoHieu(String soHieu) {
-        this.soHieu = soHieu;
+    public void setNumber(String number) {
+        this.number = number;
     }
 
-    public int getSoGhe() {
-        return soGhe;
+    public int getSeats() {
+        return seats;
     }
 
-    public void setSoGhe(int soGhe) {
-        this.soGhe = soGhe;
+    public void setSeats(int seats) {
+        this.seats = seats;
     }
 
-    public int getNgayKhoiHanh() {
-        return ngayKhoiHanh;
+    public int getDepartureDay() {
+        return departureDay;
     }
 
-    public void setNgayKhoiHanh(int ngayKhoiHanh) {
-        this.ngayKhoiHanh = ngayKhoiHanh;
+    public void setDepartureDay(int departureDay) {
+        this.departureDay = departureDay;
     }
 
-    public int getThangKhoiHanh() {
-        return thangKhoiHanh;
+    public int getDepartureMonth() {
+        return departureMonth;
     }
 
-    public void setThangKhoiHanh(int thangKhoiHanh) {
-        this.thangKhoiHanh = thangKhoiHanh;
+    public void setDepartureMonth(int departureMonth) {
+        this.departureMonth = departureMonth;
     }
 
-    public int getNamKhoiHanh() {
-        return namKhoiHanh;
+    public int getDepartureYear() {
+        return departureYear;
     }
 
-    public void setNamKhoiHanh(int namKhoiHanh) {
-        this.namKhoiHanh = namKhoiHanh;
+    public void setDepartureYear(int departureYear) {
+        this.departureYear = departureYear;
     }
 
-    public int getNgayKetThuc() {
-        return ngayKetThuc;
+    public int getEndDay() {
+        return endDay;
     }
 
-    public void setNgayKetThuc(int ngayKetThuc) {
-        this.ngayKetThuc = ngayKetThuc;
+    public void setEndDay(int endDay) {
+        this.endDay = endDay;
     }
 
-    public int getThangKetThuc() {
-        return thangKetThuc;
+    public int getEndMonth() {
+        return endMonth;
     }
 
-    public void setThangKetThuc(int thangKetThuc) {
-        this.thangKetThuc = thangKetThuc;
+    public void setEndMonth(int endMonth) {
+        this.endMonth = endMonth;
     }
 
-    public int getNamKetThuc() {
-        return NamKetThuc;
+    public int getEndYear() {
+        return endYear;
     }
 
-    public void setNamKetThuc(int namKetThuc) {
-        NamKetThuc = namKetThuc;
+    public void setEndYear(int endYear) {
+        this.endYear = endYear;
     }
 
-    public String getDiThanhPhoNao() {
-        return diThanhPhoNao;
+    public String getDestination() {
+        return destination;
     }
 
-    public void setDiThanhPhoNao(String diThanhPhoNao) {
-        this.diThanhPhoNao = diThanhPhoNao;
+    public void setDestination(String destination) {
+        this.destination = destination;
     }
 
-    public String getTinh() {
-        return tinh;
+    public String getConscious() {
+        return conscious;
     }
 
-    public void setTinh(String tinh) {
-        this.tinh = tinh;
+    public void setConscious(String conscious) {
+        this.conscious = conscious;
     }
 
-    public String getQuan() {
-        return quan;
+    public String getDistrict() {
+        return district;
     }
 
-    public void setQuan(String quan) {
-        this.quan = quan;
+    public void setDistrict(String district) {
+        this.district = district;
     }
 
-    public String getPhuong() {
-        return phuong;
+    public String getWards() {
+        return wards;
     }
 
-    public void setPhuong(String phuong) {
-        this.phuong = phuong;
+    public void setWards(String wards) {
+        this.wards = wards;
     }
 
-    public String getDiaChi() {
-        return diaChi;
+    public String getAddress() {
+        return address;
     }
 
-    public void setDiaChi(String diaChi) {
-        this.diaChi = diaChi;
+    public void setAddress(String address) {
+        this.address = address;
     }
 
-    public int getDienThoai() {
-        return dienThoai;
+    public int getPhone() {
+        return phone;
     }
 
-    public void setDienThoai(int dienThoai) {
-        this.dienThoai = dienThoai;
+    public void setPhone(int phone) {
+        this.phone = phone;
     }
 
     public String getEmail() {
@@ -238,83 +238,83 @@ public class Medical {
         this.email = email;
     }
 
-    public boolean isSot() {
-        return sot;
+    public boolean isFever() {
+        return fever;
     }
 
-    public void setSot(boolean sot) {
-        this.sot = sot;
+    public void setFever(boolean fever) {
+        this.fever = fever;
     }
 
-    public boolean isHo() {
-        return ho;
+    public boolean isCough() {
+        return cough;
     }
 
-    public void setHo(boolean ho) {
-        this.ho = ho;
+    public void setCough(boolean cough) {
+        this.cough = cough;
     }
 
-    public boolean isKhoTho() {
-        return khoTho;
+    public boolean isSultry() {
+        return sultry;
     }
 
-    public void setKhoTho(boolean khoTho) {
-        this.khoTho = khoTho;
+    public void setSultry(boolean sultry) {
+        this.sultry = sultry;
     }
 
-    public boolean isDauHong() {
-        return dauHong;
+    public boolean isSoreThroat() {
+        return soreThroat;
     }
 
-    public void setDauHong(boolean dauHong) {
-        this.dauHong = dauHong;
+    public void setSoreThroat(boolean soreThroat) {
+        this.soreThroat = soreThroat;
     }
 
-    public boolean isNon() {
-        return non;
+    public boolean isVomit() {
+        return vomit;
     }
 
-    public void setNon(boolean non) {
-        this.non = non;
+    public void setVomit(boolean vomit) {
+        this.vomit = vomit;
     }
 
-    public boolean isTieuChay() {
-        return tieuChay;
+    public boolean isDiarrhea() {
+        return diarrhea;
     }
 
-    public void setTieuChay(boolean tieuChay) {
-        this.tieuChay = tieuChay;
+    public void setDiarrhea(boolean diarrhea) {
+        this.diarrhea = diarrhea;
     }
 
-    public boolean isXuatHuyet() {
-        return xuatHuyet;
+    public boolean isHemorrhage() {
+        return hemorrhage;
     }
 
-    public void setXuatHuyet(boolean xuatHuyet) {
-        this.xuatHuyet = xuatHuyet;
+    public void setHemorrhage(boolean hemorrhage) {
+        this.hemorrhage = hemorrhage;
     }
 
-    public boolean isNoiBan() {
-        return noiBan;
+    public boolean isRash() {
+        return rash;
     }
 
-    public void setNoiBan(boolean noiBan) {
-        this.noiBan = noiBan;
+    public void setRash(boolean rash) {
+        this.rash = rash;
     }
 
-    public boolean isTrangTrai() {
-        return trangTrai;
+    public boolean isFarm() {
+        return farm;
     }
 
-    public void setTrangTrai(boolean trangTrai) {
-        this.trangTrai = trangTrai;
+    public void setFarm(boolean farm) {
+        this.farm = farm;
     }
 
-    public boolean isTiepXuc() {
-        return tiepXuc;
+    public boolean isContact() {
+        return contact;
     }
 
-    public void setTiepXuc(boolean tiepXuc) {
-        this.tiepXuc = tiepXuc;
+    public void setContact(boolean contact) {
+        this.contact = contact;
     }
 }

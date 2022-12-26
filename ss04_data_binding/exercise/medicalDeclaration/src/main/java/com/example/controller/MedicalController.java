@@ -31,7 +31,7 @@ public class MedicalController {
 
     @PostMapping("/add")
     String showDienToKhaiYTe(Model model, @ModelAttribute Medical medicalForm){
-        model.addAttribute("toKhaiYTe",medicalForm);
+        model.addAttribute("Medical",medicalForm);
         return "result";
     }
 }

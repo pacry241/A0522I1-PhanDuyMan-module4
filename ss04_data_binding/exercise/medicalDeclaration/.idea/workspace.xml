@@ -5,8 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e824ea35-aced-47cb-9bd8-c96810522182" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/controller/MedicalController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/controller/MedicalController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/model/Medical.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/model/Medical.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/home.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/home.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/result.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/result.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,11 +55,12 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "D:/Codegym/Module4/ss04_data_binding/exercise/medicalDeclaration/src/main/webapp/WEB-INF",
+    "last_opened_file_path": "D:/Codegym/Module4/ss03_html_themeleaf/exercise/ProductManagement",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)"
+    "node.js.selected.package.tslint": "(autodetect)",
+    "spring.configuration.checksum": "d4c7fdcd8992b18d0e8d574a1bbd94b6"
   }
 }]]></component>
   <component name="RecentsManager">
@@ -161,6 +166,8 @@
       <option name="presentableId" value="Default" />
       <updated>1672043866651</updated>
       <workItem from="1672043868132" duration="1111000" />
+      <workItem from="1672052056917" duration="314000" />
+      <workItem from="1672052575597" duration="3557000" />
     </task>
     <servers />
   </component>
