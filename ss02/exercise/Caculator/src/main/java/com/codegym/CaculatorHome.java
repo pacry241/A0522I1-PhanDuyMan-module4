@@ -13,6 +13,8 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 @RequestMapping("home")
 public class CaculatorHome {
 
+    @Autowired
+    CaculatorService service;
     @GetMapping("")
     public String showForm() {
         return "caculatorForm";
@@ -21,22 +23,7 @@ public class CaculatorHome {
     @PostMapping("")
     public String caculator(@RequestParam("firstNumber") double firstNumber, @RequestParam("secondNumber") double secondNumber,
                             @RequestParam("operator") String operator, Model model, RedirectAttributes redirectAttributes) {
-        String result = "";
-
-        switch (operator) {
-            case "+":
-                result = String.valueOf(firstNumber + secondNumber);
-                break;
-            case "-":
-                result = String.valueOf(firstNumber - secondNumber);
-                break;
-            case "*":
-                result = String.valueOf(firstNumber * secondNumber);
-                break;
-            case "/":
-                result = secondNumber == 0 ? "Cannot division to zero" : String.valueOf(firstNumber / secondNumber);
-                break;
-        }
+        String result = service.resultCaculator(firstNumber,secondNumber,operator);
 
 //        model.addAttribute("result", result); cách 1
 //        cách 2:

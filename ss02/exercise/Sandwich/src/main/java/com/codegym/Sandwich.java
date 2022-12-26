@@ -16,15 +16,12 @@ public class Sandwich {
     }
 
     @PostMapping("")
-    public String checkMenu(@RequestParam(value = "Lettuce", defaultValue = "") String Lettuce,
-                            @RequestParam(value = "Tomato", defaultValue = "") String Tomato,
-                            @RequestParam(value = "Mustard", defaultValue = "") String Mustard,
-                            @RequestParam(value = "Sprouts", defaultValue = "") String Sprouts,
+    public String checkMenu(@RequestParam(value = "condiments", defaultValue = "") String condiments,
                             Model model) {
-        if (Tomato.equals("") && Lettuce.equals("") && Mustard.equals("") && Sprouts.equals("")) {
+        if (condiments.equals("")) {
             model.addAttribute("result", "Không có gia vị nào cả");
         } else {
-            model.addAttribute("result", Tomato + " " + Lettuce + " " + Mustard + " " + Sprouts);
+            model.addAttribute("result", condiments);
         }
         return "formMenu";
     }
