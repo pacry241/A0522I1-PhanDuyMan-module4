@@ -16,6 +16,7 @@ import java.util.List;
 public class MailController {
     public static List<String> languageList = new ArrayList<>();
     public static List<Integer> pageList = new ArrayList<>();
+
     static {
         languageList.add("English");
         languageList.add("Vietnamese");
@@ -30,21 +31,17 @@ public class MailController {
         pageList.add(100);
     }
 
-
-
-
     @GetMapping("/home")
     public String home(Model model) {
-        model.addAttribute("languageList",languageList);
-        model.addAttribute("pageList",pageList);
-
-        model.addAttribute("formMail",new FormMail());
+        model.addAttribute("languageList", languageList);
+        model.addAttribute("pageList", pageList);
+        model.addAttribute("formMail", new FormMail());
         return "home";
     }
 
     @PostMapping("/save")
-    public String login(@ModelAttribute("formMail") FormMail formMail, Model model){
-        model.addAttribute("formMail",formMail);
+    public String login(@ModelAttribute("formMail") FormMail formMail, Model model) {
+        model.addAttribute("formMail", formMail);
         return "result";
     }
 }

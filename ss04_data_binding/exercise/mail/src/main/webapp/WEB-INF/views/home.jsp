@@ -20,7 +20,7 @@
             <tr>
                 <td><form:label path="language">Languages:</form:label></td>
                 <td>
-                    <form:select  path="language">
+                    <form:select path="language">
                         <form:option value="NONE"> --SELECT--</form:option>
                         <form:options items="${languageList}"></form:options>
                     </form:select>
@@ -28,7 +28,7 @@
             </tr>
             <tr>
                 <td><form:label path="pageSize">Page Size:</form:label></td>
-                <td>Show <form:select  path="pageSize">
+                <td>Show <form:select path="pageSize">
                     <form:options items="${pageList}"></form:options>
                 </form:select>
                     emails per page
@@ -36,11 +36,11 @@
             </tr>
             <tr>
                 <td><form:label path="spams">Spams fillter</form:label></td>
-                <td><form:checkbox path="spams" />Enables spams filter</td>
+                <td><form:checkbox path="spams"/>Enables spams filter</td>
             </tr>
             <tr>
                 <td><form:label path="signature">Spams fillter</form:label></td>
-                <td><form:textarea path="signature" /></td>
+                <td><form:textarea path="signature"/></td>
             </tr>
             <tr>
                 <td><form:button>Cancel</form:button></td>
