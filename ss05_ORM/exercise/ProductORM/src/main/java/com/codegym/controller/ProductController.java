@@ -51,15 +51,15 @@ public class ProductController {
 
     //delete
     @GetMapping("/{id}/delete")
-    String deleteProduct(@PathVariable String id, Model model) throws Exception {
-        iProductService.delete(id);
+    String deleteProduct(@PathVariable int id, Model model) throws Exception {
+        service.delete(id);
         return "redirect:/product";
     }
 
     //search
     @GetMapping("/search")
     String pageSearch(@RequestParam String search, Model model) throws Exception{
-        model.addAttribute("listProduct",iProductService.findByName(search));
+        model.addAttribute("listProduct",service.findByName(search));
         return "list";
     }
 }
