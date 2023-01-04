@@ -9,9 +9,11 @@ import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
+import javax.transaction.Transactional;
 import java.util.List;
 
 @Repository
+@Transactional
 public class MusicRepository implements IMusicRepository {
     private static SessionFactory sessionFactory;
     private static EntityManager entityManager;
@@ -36,7 +38,9 @@ public class MusicRepository implements IMusicRepository {
 
     @Override
     public void save(Music music) {
+        entityManager.getTransaction().begin();
         entityManager.persist(music);
+        entityManager.getTransaction().commit();
     }
 
     @Override
@@ -52,6 +56,8 @@ public class MusicRepository implements IMusicRepository {
 
     @Override
     public void delete(Music music) {
+        entityManager.getTransaction().begin();
         entityManager.remove(music);
+        entityManager.getTransaction().commit();
     }
 }

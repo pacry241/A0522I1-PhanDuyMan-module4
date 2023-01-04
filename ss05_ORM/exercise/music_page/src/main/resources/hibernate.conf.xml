@@ -13,6 +13,9 @@
         <property name="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</property>
         <!--        Tự động update nếu entity có thay đổi.-->
 <!--        Ngoài ra còn có create và none.-->
+<!--        update sử dụng lại bản cũ
+            Create xóa bản cũ tạo lại bản mới
+            none ngăn chặn thao tác -->
         <property name="hbm2ddl.auto">update</property>
         <mapping class="com.example.model.Music"/>
     </session-factory>
