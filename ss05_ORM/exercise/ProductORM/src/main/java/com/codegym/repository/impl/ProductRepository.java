@@ -13,7 +13,9 @@ import javax.transaction.Transactional;
 import java.util.List;
 
 @Repository
+@Transactional
 public class ProductRepository implements IProductRepository {
+    //sessionFactory: session kết nối đến database đọc cấu hình trong hibernate config
     private static SessionFactory sessionFactory;
     private static EntityManager entityManager;
 
@@ -35,7 +37,6 @@ public class ProductRepository implements IProductRepository {
     }
 
     @Override
-    @Transactional
     //không thể tự động, cần có transaction, hỗ trợ việc thêm mới,sửa, xóa
     public void create(Product product) throws Exception {
         entityManager.getTransaction().begin();

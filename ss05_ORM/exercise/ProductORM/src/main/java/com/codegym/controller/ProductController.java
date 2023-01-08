@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 public class ProductController {
 
     @Autowired
-    ProductService service;
+     private ProductService service;
 
     @GetMapping("")
     public String showList(Model model){
@@ -20,45 +20,45 @@ public class ProductController {
         return "list";
     }
     @GetMapping("/create")
-    String pageCreate(@ModelAttribute Product product, Model model){
+    public String pageCreate(@ModelAttribute Product product, Model model){
         model.addAttribute("product",product);
         return "create";
     }
     @PostMapping("/save")
-    String addProduct(@ModelAttribute Product product) throws Exception {
+    public String addProduct(@ModelAttribute Product product) throws Exception {
         service.create(product);
         return "redirect:/product";
     }
 
     @GetMapping("/{id}/edit")
-    String pageEdit(@PathVariable int id, Model model) throws Exception {
+    public String pageEdit(@PathVariable int id, Model model) throws Exception {
         model.addAttribute("product",service.findById(id));
         return "edit";
     }
 
     @PostMapping("/update")
-    String updateProduct(@ModelAttribute Product product) throws Exception {
+    public String updateProduct(@ModelAttribute Product product) throws Exception {
         service.update(product);
         return "redirect:/product";
     }
 
     //view
     @GetMapping("/{id}/view")
-    String pageView(@PathVariable int id, Model model) throws Exception {
+    public String pageView(@PathVariable int id, Model model) throws Exception {
         model.addAttribute("product",service.findById(id));
         return "view";
     }
 
     //delete
     @GetMapping("/{id}/delete")
-    String deleteProduct(@PathVariable int id, Model model) throws Exception {
+    public String deleteProduct(@PathVariable int id, Model model) throws Exception {
         service.delete(id);
         return "redirect:/product";
     }
 
     //search
     @GetMapping("/search")
-    String pageSearch(@RequestParam String search, Model model) throws Exception{
+    public String pageSearch(@RequestParam String search, Model model) throws Exception{
         model.addAttribute("listProduct",service.findByName(search));
         return "list";
     }

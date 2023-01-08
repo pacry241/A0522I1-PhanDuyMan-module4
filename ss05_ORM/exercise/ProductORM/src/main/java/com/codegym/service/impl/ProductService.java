@@ -12,7 +12,7 @@ import java.util.List;
 @Service
 public class ProductService implements IPRoductService {
     @Autowired
-    ProductRepository repository;
+     private ProductRepository repository;
     @Override
     public List<Product> findAll() {
         return repository.findAll();
