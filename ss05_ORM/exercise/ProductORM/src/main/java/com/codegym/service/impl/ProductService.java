@@ -37,9 +37,4 @@ public class ProductService implements IPRoductService {
     public Product findById(int id) throws Exception {
         return repository.findById(id);
     }
-
-    @Override
-    public List<Product> findByName(String nameSearch) {
-        return null;
-    }
 }

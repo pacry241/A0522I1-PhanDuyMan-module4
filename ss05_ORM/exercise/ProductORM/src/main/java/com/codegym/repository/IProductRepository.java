@@ -16,5 +16,4 @@ public interface IProductRepository {
 
     Product findById(int id) throws Exception;
 
-    List<Product> findByName(String nameSearch);
 }

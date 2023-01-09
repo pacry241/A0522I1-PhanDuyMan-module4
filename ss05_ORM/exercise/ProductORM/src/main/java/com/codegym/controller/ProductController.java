@@ -55,11 +55,4 @@ public class ProductController {
         service.delete(id);
         return "redirect:/product";
     }
-
-    //search
-    @GetMapping("/search")
-    public String pageSearch(@RequestParam String search, Model model) throws Exception{
-        model.addAttribute("listProduct",service.findByName(search));
-        return "list";
-    }
 }

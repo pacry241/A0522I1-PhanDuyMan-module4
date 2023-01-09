@@ -60,9 +60,4 @@ public class ProductRepository implements IProductRepository {
     public Product findById(int id) throws Exception {
         return entityManager.find(Product.class, id);
     }
-
-    @Override
-    public List<Product> findByName(String nameSearch) {
-        return null;
-    }
 }
