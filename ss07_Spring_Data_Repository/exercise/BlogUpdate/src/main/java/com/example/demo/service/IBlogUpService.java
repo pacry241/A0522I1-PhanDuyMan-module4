@@ -13,5 +13,5 @@ public interface IBlogUpService {
     void update(BlogUp blogUp);
     void delete(BlogUp blogUp);
 
-//    Page<BlogUp> getAllWithPage(PageRequest pageRequest);
+    Page<BlogUp> getAllWithPage(PageRequest pageRequest);
 }

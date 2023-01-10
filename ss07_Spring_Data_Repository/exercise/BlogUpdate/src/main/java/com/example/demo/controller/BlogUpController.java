@@ -23,22 +23,22 @@ public class BlogUpController {
     @Autowired
     private CategoryService categoryService;
 
-    @GetMapping("")
-    public ModelAndView findAll() {
-        List<BlogUp> blogList = service.findAll();
-        ModelAndView modelAndView = new ModelAndView("list");
-        modelAndView.addObject("blogList", blogList);
-        return modelAndView;
-    }
-
 //    @GetMapping("")
-//    public ModelAndView getAllWithPage(@RequestParam(value = "page", defaultValue = "0")int page) {
-//        Sort sort = Sort.by("time").ascending();
-//        Page<BlogUp> blogList = service.getAllWithPage(PageRequest.of(page,2,sort));
+//    public ModelAndView findAll() {
+//        List<BlogUp> blogList = service.findAll();
 //        ModelAndView modelAndView = new ModelAndView("list");
 //        modelAndView.addObject("blogList", blogList);
 //        return modelAndView;
 //    }
+
+    @GetMapping("")
+    public ModelAndView getAllWithPage(@RequestParam(value = "page", defaultValue = "0")int page) {
+        Sort sort = Sort.by("time");
+        Page<BlogUp> blogList = service.getAllWithPage(PageRequest.of(page,2,sort));
+        ModelAndView modelAndView = new ModelAndView("list");
+        modelAndView.addObject("blogList", blogList);
+        return modelAndView;
+    }
 
     @GetMapping("/create")
     public String pageCreate(@ModelAttribute BlogUp blog, Model model) {

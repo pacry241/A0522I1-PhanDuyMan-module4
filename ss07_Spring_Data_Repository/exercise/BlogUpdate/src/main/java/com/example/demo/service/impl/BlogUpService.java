@@ -38,8 +38,8 @@ public class BlogUpService implements IBlogUpService {
         repository.delete(blogUp);
     }
 
-//    @Override
-//    public Page<BlogUp> getAllWithPage(PageRequest pageRequest) {
-//        return repository.findAllWithPage(pageRequest);
-//    }
+    @Override
+    public Page<BlogUp> getAllWithPage(PageRequest pageRequest) {
+        return repository.findAllWithPage(pageRequest);
+    }
 }

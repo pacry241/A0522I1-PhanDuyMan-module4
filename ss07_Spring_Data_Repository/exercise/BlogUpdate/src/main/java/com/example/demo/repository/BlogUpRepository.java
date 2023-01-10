@@ -10,7 +10,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface BlogUpRepository extends JpaRepository<BlogUp, Integer> {
-//    @Query(value = "select * from blog_up", countName = "select * from blog_up", nativeQuery = true)
-//    @Modifying
-//    Page<BlogUp> findAllWithPage(PageRequest pageRequest);
+    @Query(value = "select * from blog_up", nativeQuery = true)
+    Page<BlogUp> findAllWithPage(PageRequest pageRequest);
 }
