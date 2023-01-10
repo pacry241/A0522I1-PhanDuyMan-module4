@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<th:if test="${message != null}">
+    <strong style="color: green" th:text="${message}"></strong> <!--text -->
+</th:if>
+<p>
+    <a th:href="@{/home/create}">
+        Add New Blog
+    </a>
+</p>
+<table border="1" th:unless="${blogList.isEmpty()}">
+    <tr>
+        <th>No</th>
+        <th>Author</th>
+        <th>Category</th>
+        <th>Time</th>
+        <th>Description</th>
+        <th>Detail</th>
+        <th>Update</th>
+        <th>Delete</th>
+    </tr>
+    <tr th:each="blog, iStat   : ${blogList}">
+        <td th:text="${iStat.count}"></td>
+        <td th:text="${blog.author}"></td>
+        <td th:text="${blog.category.nameCategory}"></td>
+        <td th:text="${blog.time}"></td>
+        <td th:text="${blog.description}"></td>
+        <td><a th:href="@{/home/view/{id}(id = ${blog.id})}">Detail</a></td>
+        <td><a th:href="@{/home/edit/{id}(id = ${blog.id})}">Update</a>
+        <td><a th:href="@{/home/delete/{id}(id = ${blog.id})}">Delete</a></td>
+    </tr>
+
+<!--    <div>-->
+<!--        <a th:href="@{'/customers'(page=${blogList.number - 1})}" th:if="${blogList.hasPrevious()}">Previous</a>-->
+<!--        <span th:text="${blogList.number + 1}"></span>/<span th:text="${blogList.totalPages}"></span>-->
+<!--        <a th:href="@{'/customers'(page=${blogList.number + 1})}" th:if="${blogList.hasNext()}">Next</a>-->
+<!--    </div>-->
+</table>
+</body>
+</html>
