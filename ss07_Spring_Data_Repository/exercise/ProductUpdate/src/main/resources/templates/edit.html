@@ -3,29 +3,31 @@
 <head th:replace="/layout :: head">
 </head>
 <body>
-<h3>Add Product</h3>
+<h3>Edit Product</h3>
 <p>
   <a th:href="@{/product}">
     Back to customer list
   </a>
 </p>
 <div id="form">
-  <form th:action="@{/product/save}" th:object="${product}"
+  <form action="#" th:action="@{/product/update}" th:object="${product}"
         method="POST" novalidate="novalidate">
+
+    <input type="hidden" th:field="*{id}"/>
+
     <div>
       <label>Name</label>
       <input type="text" th:field="*{name}"/>
     </div>
     <div>
       <label>Price</label>
-      <input type="text" th:field="*{price}"/>
+      <input type="email" th:field="*{price}"/>
     </div>
     <div>
       <label>Description</label>
       <input type="text" th:field="*{description}"/>
     </div>
-    <input type="reset" value="Reset">
-    <input type="submit" value="Save"/>
+    <input type="submit" value="Edit"/>
   </form>
 </div>
 </body>
