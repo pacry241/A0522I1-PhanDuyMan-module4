@@ -10,4 +10,5 @@ public class ProductUpdateApplication {
 		SpringApplication.run(ProductUpdateApplication.class, args);
 	}
 
+
 }
