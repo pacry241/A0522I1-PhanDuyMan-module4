@@ -25,7 +25,7 @@ public class Music {
     private String singer;
 
     @NotEmpty
-    @Size(max = 800)
+    @Size(max = 1000)
     @Pattern(regexp = "^[a-zA-Z0-9\\,]*$")
     private String kind;
 
