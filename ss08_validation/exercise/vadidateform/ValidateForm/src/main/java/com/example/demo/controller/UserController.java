@@ -1,6 +1,8 @@
 package com.example.demo.controller;
 
 import com.example.demo.model.User;
+import com.example.demo.service.Impl.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
@@ -13,6 +15,9 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 @RequestMapping("")
 public class UserController {
+    @Autowired
+    private UserService service;
+
     @GetMapping("/user")
     public ModelAndView showForm() {
         ModelAndView modelAndView = new ModelAndView("/index");
@@ -24,7 +29,9 @@ public class UserController {
     public ModelAndView checkValidation(@Validated @ModelAttribute("user") User user, BindingResult bindingResult) {
         if (bindingResult.hasFieldErrors()) {
             return new ModelAndView("/index");
+        } else {
+            service.save(user);
+            return new ModelAndView("/result");
         }
-        return new ModelAndView("/result");
     }
 }

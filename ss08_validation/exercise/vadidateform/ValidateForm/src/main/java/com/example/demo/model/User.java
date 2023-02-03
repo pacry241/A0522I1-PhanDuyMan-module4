@@ -4,26 +4,39 @@ package com.example.demo.model;
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
 
+import javax.persistence.*;
 import javax.validation.constraints.*;
 
+@Entity
+@Table(name = "users")
 public class User  {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
+    private int userId;
     @NotEmpty
     @Size(min = 5, max = 45)
+    @Column(name = "firstName")
     private String firstName;
 
     @NotEmpty
     @Size(min = 5, max = 45)
+    @Column(name = "lastName")
     private String lastName;
 
     @Size(min = 1, message = "whatever")
     @Pattern(regexp = "^(84|0[3|5|7|8|9])+([0-9]{8})$")
+    @Column(name = "phone")
     private String phoneNumber;
 
     @Min(value = 18)
+    @Column(name = "age")
     private int age;
 
     @Email
     @NotEmpty
+    @Column(name = "email")
     private String email;
 
     public User() {
