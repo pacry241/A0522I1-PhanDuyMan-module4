@@ -1,6 +1,7 @@
 package com.example.demo.model;
 
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
 
