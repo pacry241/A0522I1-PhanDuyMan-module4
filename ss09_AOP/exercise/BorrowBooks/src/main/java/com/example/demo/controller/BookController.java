@@ -20,7 +20,7 @@ public class BookController {
 
     @GetMapping("/list")
     public String showBook(@RequestParam(value = "page", defaultValue = "0")int page, Model model) {
-        model.addAttribute("bookList", iBookService.findIdAndShowBook(PageRequest.of(page,5)));
+        model.addAttribute("bookList", iBookService.findIdAndShowBook(PageRequest.of(page,2)));
         return "list";
     }
 
@@ -44,7 +44,6 @@ public class BookController {
     @GetMapping("/pay/{id}")
     public String showPay(@PathVariable int id, Model model) {
         model.addAttribute("book", iBookService.findById(id));
-
         return "/pay";
     }
     @PostMapping("/savePay")

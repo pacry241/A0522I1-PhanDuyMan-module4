@@ -24,7 +24,11 @@ public class BookService implements IBookService {
 
     @Override
     public Book borrowBook(Book book) throws Exception {
-        book.setAmount(book.getAmount()-1);
+        if (book.getAmount()==0){
+            book.setAmount(0);
+        }else {
+            book.setAmount(book.getAmount()-1);
+        }
         return repository.save(book);
     }
 
