@@ -1,0 +1,52 @@
+<html>
+<head>
+    <title>Create new student</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+</div>
+<h2>Create student</h2>
+<p>Name: </p>
+<input type="text" id="nameStudent"/>
+<p id="errNameStudent" style="color: red;"></p>
+<p>Point: </p>
+<input type="number" id="point"/>
+<br>
+<p>Gender: </p>
+<input type="text" id="gender"/>
+
+<input type="button" id="buttonClick" value="Create new"/>
+</div>
+<script>
+    $(document).ready(function() {
+       $('#buttonClick').click(function(evnet) {
+        let nameStudent = document.getElementById("nameStudent").value;
+        let point = document.getElementById("point").value;
+        let gender = document.getElementById("gender").value;
+        let jsonValue = {
+            "nameStudent": nameStudent,
+            "point": point,
+            "gender": gender
+        }
+        $.ajax({
+            headers: {
+                "Accept": "application/json",
+                "Content-Type": "application/json"
+            }
+        ,
+        type: "POST",
+        data: JSON.stringify(jsonValue),
+        url: "http://localhost:8080/api/student",
+        success: function() {
+            alert("Theem moi than cong")
+        },
+        error: function (params) {
+            console.log(params.responseJSON.nameStudent);
+            document.getElementById("errNameStudent").innerText = params.responseJSON.nameStudent;
+        }
+        })
+       })
+    })
+</script>
+</body>
+</html>
