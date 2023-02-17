@@ -1,6 +1,5 @@
 package com.example.demo.service.impl;
 
-import com.example.demo.model.BlogUp;
 import com.example.demo.model.Category;
 import com.example.demo.repository.CategoryRepository;
 import com.example.demo.service.ICategoryService;
@@ -15,5 +14,15 @@ public class CategoryService implements ICategoryService {
     @Override
     public List<Category> findAll() {
         return categoryRepository.findAll();
+    }
+
+    @Override
+    public List<Category> findAllById(Integer id) {
+        return (List<Category>) categoryRepository.findById(id).orElse(new Category());
+    }
+
+    @Override
+    public Category findById(Integer id) {
+        return categoryRepository.findById(id).orElse(new Category());
     }
 }

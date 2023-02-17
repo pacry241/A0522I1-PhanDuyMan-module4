@@ -1,6 +1,7 @@
 package com.example.demo.service.impl;
 
 import com.example.demo.model.BlogUp;
+import com.example.demo.model.Category;
 import com.example.demo.repository.BlogUpRepository;
 import com.example.demo.service.IBlogUpService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +10,8 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
+
 @Service
 public class BlogUpService implements IBlogUpService {
     @Autowired
@@ -29,6 +32,11 @@ public class BlogUpService implements IBlogUpService {
     }
 
     @Override
+    public Optional<BlogUp> findBlogUpById(Integer id) {
+        return repository.findById(id);
+    }
+
+    @Override
     public void update(BlogUp blogUp) {
         repository.save(blogUp);
     }
@@ -36,6 +44,11 @@ public class BlogUpService implements IBlogUpService {
     @Override
     public void delete(BlogUp blogUp) {
         repository.delete(blogUp);
+    }
+
+    @Override
+    public List<BlogUp> findBlogsByCategory(Category category) {
+        return repository.findBlogUpsByCategory(category);
     }
 
     @Override
