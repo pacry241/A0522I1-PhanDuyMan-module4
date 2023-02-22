@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+<th:if test="${message != null}">
+    <strong style="color: green" th:text="${message}"></strong> <!--text -->
+</th:if>
+<p>
+    <a th:href="@{/home/create}">
+        Add New Blog
+    </a>
+</p>
+<table id="tableList" border="1">
+    <tr>
+        <th>No</th>
+        <th>Author</th>
+        <th>Category</th>
+        <th>Time</th>
+        <th>Description</th>
+        <th>Detail</th>
+        <th>Update</th>
+        <th>Delete</th>
+    </tr>
+</table>
+<script>
+    successHandler()
+    function successHandler() {
+        $.ajax({
+            type: "GET",
+            //tên API
+            url: "http://localhost:8080/api-blog",
+            //xử lý khi thành công
+            success: function (data) {
+                var blogs = JSON.parse(JSON.stringify(data));
+                for (let i = 0; i < data.length; i++) {
+                }
+                document.getElementById('tableList').innerHTML = content;
+            }
+        });
+    }
+</script>
+</body>
+</html>
