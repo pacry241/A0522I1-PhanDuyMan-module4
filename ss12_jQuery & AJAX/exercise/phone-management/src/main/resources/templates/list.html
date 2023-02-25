@@ -62,6 +62,7 @@
                         '        <td>Model</td>\n' +
                         '        <td>Price</td>\n' +
                         '        <td>Delete</td>\n' +
+                        '        <td>Edit</td>\n'+
                         '    </tr>';
                     for (let i = 0; i < data.length; i++) {
                         content += getSmartphone(data[i]);
@@ -72,7 +73,8 @@
         }
         function getSmartphone(smartphone) {
             return `<tr><td >${smartphone.producer}</td><td >${smartphone.model}</td><td >${smartphone.price}</td>` +
-                `<td><a class="deleteSmartphone" href="${smartphone.id}">Delete</a></td></tr>`;
+                `<td><a class="deleteSmartphone" href="${smartphone.id}">Delete</a></td>`+
+                 `<td><a class="editSmartphone" href="${smartphone.id}">Edit</a></td></tr>`;
         }
         $(document).ready(function () {
             //sư kiện nào thực hiện Ajax
@@ -142,7 +144,7 @@
 </form>
 
 <h1>Smartphone List</h1>
-<table id="smartphoneList">
+<table border="1px" id="smartphoneList">
     <tr>
         <td>Producer</td>
         <td>Model</td>

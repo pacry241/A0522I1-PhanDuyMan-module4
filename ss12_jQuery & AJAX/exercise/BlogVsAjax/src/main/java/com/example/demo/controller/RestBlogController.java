@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
 import java.util.Optional;
@@ -27,6 +28,14 @@ public class RestBlogController {
     @GetMapping("")
     public List<BlogUp> getList() {
         return blogUpService.findAll();
+    }
+
+    @GetMapping("list")
+    public ModelAndView findAll() {
+        List<BlogUp> blogList = blogUpService.findAll();
+        ModelAndView modelAndView = new ModelAndView("list");
+        modelAndView.addObject("blogList", blogList);
+        return modelAndView;
     }
 
     @GetMapping("/{id}")
@@ -52,7 +61,7 @@ public class RestBlogController {
         Category category = categoryService.findById(id);
         List<BlogUp> blogList = blogUpService.findBlogsByCategory(category);
         if (blogList.isEmpty()) {
-            return  new ResponseEntity<>(HttpStatus.NO_CONTENT);
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
         return new ResponseEntity<>(blogList, HttpStatus.OK);
     }

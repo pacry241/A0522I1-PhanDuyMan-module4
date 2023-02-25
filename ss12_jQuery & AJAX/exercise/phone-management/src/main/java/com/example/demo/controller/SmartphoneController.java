@@ -5,7 +5,9 @@ import com.example.demo.service.impl.SmartphoneService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.util.Optional;
 
@@ -20,6 +22,15 @@ public class SmartphoneController {
     public ResponseEntity<?> allPhones() {
         return new ResponseEntity<>(service.findAll(), HttpStatus.OK);
     }
+
+    @GetMapping("list")
+    public ModelAndView list() {
+        ModelAndView modelAndView = new ModelAndView("list");
+        modelAndView.addObject("phones", service.findAll());
+        return modelAndView;
+    }
+
+
 
     @PostMapping
     public ResponseEntity<Smartphone> createSmartphone(@RequestBody Smartphone smartphone) {

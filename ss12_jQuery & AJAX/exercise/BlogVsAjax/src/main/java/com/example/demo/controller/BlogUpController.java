@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import java.util.List;
+
 @Controller
 @RequestMapping("home")
 public class BlogUpController {
@@ -21,13 +23,13 @@ public class BlogUpController {
     @Autowired
     private CategoryService categoryService;
 
-//    @GetMapping("")
-//    public ModelAndView findAll() {
-//        List<BlogUp> blogList = service.findAll();
-//        ModelAndView modelAndView = new ModelAndView("list");
-//        modelAndView.addObject("blogList", blogList);
-//        return modelAndView;
-//    }
+    @GetMapping("")
+    public ModelAndView findAll() {
+        List<BlogUp> blogList = service.findAll();
+        ModelAndView modelAndView = new ModelAndView("list");
+        modelAndView.addObject("blogList", blogList);
+        return modelAndView;
+    }
 
     @GetMapping("")
     public ModelAndView getAllWithPage(@RequestParam(value = "page", defaultValue = "0")int page) {

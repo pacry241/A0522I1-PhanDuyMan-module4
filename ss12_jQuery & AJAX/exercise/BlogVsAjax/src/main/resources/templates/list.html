@@ -14,7 +14,7 @@
         Add New Blog
     </a>
 </p>
-<table id="tableList" border="1">
+<table border="1" th:unless="${blogList.isEmpty()}">
     <tr>
         <th>No</th>
         <th>Author</th>
@@ -25,23 +25,22 @@
         <th>Update</th>
         <th>Delete</th>
     </tr>
+    <tr th:each="blog, iStat   : ${blogList}">
+        <td th:text="${iStat.count}"></td>
+        <td th:text="${blog.author}"></td>
+        <td th:text="${blog.category.nameCategory}"></td>
+        <td th:text="${blog.time}"></td>
+        <td th:text="${blog.description}"></td>
+        <td><a th:href="@{/home/view/{id}(id = ${blog.id})}">Detail</a></td>
+        <td><a th:href="@{/home/edit/{id}(id = ${blog.id})}">Update</a>
+        <td><a th:href="@{/home/delete/{id}(id = ${blog.id})}">Delete</a></td>
+    </tr>
+
+    <div>
+        <a th:href="@{'/home'(page=${blogList.number - 1})}" th:if="${blogList.hasPrevious()}">Previous</a>
+        <span th:text="${blogList.number + 1}"></span>/<span th:text="${blogList.totalPages}"></span>
+        <a th:href="@{'/home'(page=${blogList.number + 1})}" th:if="${blogList.hasNext()}">Next</a>
+    </div>
 </table>
-<script>
-    successHandler()
-    function successHandler() {
-        $.ajax({
-            type: "GET",
-            //tên API
-            url: "http://localhost:8080/api-blog",
-            //xử lý khi thành công
-            success: function (data) {
-                var blogs = JSON.parse(JSON.stringify(data));
-                for (let i = 0; i < data.length; i++) {
-                }
-                document.getElementById('tableList').innerHTML = content;
-            }
-        });
-    }
-</script>
 </body>
 </html>
