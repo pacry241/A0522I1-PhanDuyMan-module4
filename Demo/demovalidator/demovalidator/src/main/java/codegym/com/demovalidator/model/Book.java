@@ -2,6 +2,8 @@ package codegym.com.demovalidator.model;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.validation.Errors;
+import org.springframework.validation.Validator;
 
 import javax.persistence.*;
 import javax.validation.constraints.Max;
@@ -11,7 +13,7 @@ import java.util.Date;
 
 @Entity
 @Table(name = "book")
-public class Book {
+public class Book implements Validator {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "book_id")
@@ -91,5 +93,19 @@ public class Book {
 
     public void setPublishDate(Date publishDate) {
         this.publishDate = publishDate;
+    }
+
+    @Override
+    public boolean supports(Class<?> clazz) {
+        return false;
+    }
+
+    @Override
+    public void validate(Object target, Errors errors) {
+        Book book = (Book) target;
+        Date datePublish = book.getPublishDate();
+        if (datePublish != null && datePublish.after(new Date())) {
+            errors.rejectValue("publishDate", "book.create.publishDate.afternow", "Ngày xuất bản không đúng");
+        }
     }
 }

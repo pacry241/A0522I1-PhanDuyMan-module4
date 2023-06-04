@@ -14,7 +14,7 @@
 <div id="form">
     <form th:action="@{/home/update}" th:object="${blog}"
           method="POST" novalidate="novalidate">
-        <input type="number" th:field="*{id}" hidden/>
+        <input type="hidden" th:field="*{id}"/>
         <div>
             <label>Auther</label>
             <input type="text" th:field="*{author}"/>

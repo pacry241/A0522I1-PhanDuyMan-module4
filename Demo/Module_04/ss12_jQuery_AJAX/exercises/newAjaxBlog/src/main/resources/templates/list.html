@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>List Blog</title>
+</head>
+<body>
+
+<form id="add-blog">
+    <table>
+        <tr>
+            <td>Name:</td>
+            <td><input type="text" id="name" placeholder="name"></td>
+        </tr>
+        <tr>
+            <td>Title:</td>
+            <td><input type="text" id="title" placeholder="title"></td>
+        </tr>
+        <tr>
+            <td>Content:</td>
+            <td><input type="text" id="content" placeholder="content"></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><input type="submit" value="Add" id="addNew" ></td>
+            <!--            <td><input type="submit" value="Add" id="addNew" onclick="addNewSmartPhone()"></td>-->
+        </tr>
+    </table>
+</form>
+
+<h1>Blog List</h1>
+<table id="blogList">
+    <tr>
+        <td>Name</td>
+        <td>Title</td>
+        <td>Content</td>
+        <td>Update</td>
+        <td>Delete</td>
+    </tr>
+    <!--    <th:block th:each="smartphone: ${smartphones}">-->
+    <!--        <tr>-->
+    <!--            <td th:text="${smartphone.producer}"></td>-->
+    <!--            <td th:text="${smartphone.model}"></td>-->
+    <!--            <td th:text="${smartphone.price}"></td>-->
+    <!--            <td><a class="deleteSmartphone" th:href="${smartphone.getId()}">Delete</a></td>-->
+    <!--        </tr>-->
+    <!--    </th:block>-->
+    <th:block th:each="blog: ${blogs}">
+        <tr>
+            <td ><input id="producerSM" th:value="${blog.name}"/></td>
+            <td ><input id="modelSM" th:value="${blog.title}" /></td>
+            <td ><input id="priceSM" th:value="${blog.content}"/></td>
+            <td><a class="updateBlog" th:href="${blog.getId()}" data-bs-toggle="modal"
+                   data-bs-target="#exampleModal">Update</a></td>
+            <td><a class="deleteBlog" th:href="${blog.getId()}">Delete</a></td>
+        </tr>
+    </th:block>
+</table>
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <input type="hidden" id="id">
+                <div class="form-group">
+                    <label>Name</label>
+                    <input type="text" class="form-control"  id="updateName">
+                </div>
+                <div class="form-group">
+                    <label>Title</label>
+                    <input type="text" class="form-control"  id="updateTitle">
+                </div>
+                <div class="form-group">
+                    <label>Content</label>
+                    <input type="text" class="form-control"  id="updateContent">
+                </div>
+                <div class="form-group"></div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" id="updateBlog" data-bs-dismiss = "modal">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+        integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
+        integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
+        crossorigin="anonymous"></script>
+
+<script type="text/javascript">
+
+    function addNewBlog() {
+        //lay du lieu
+        let name = $('#name').val();
+        let title = $('#title').val();
+        let content = $('#content').val();
+        let newBlog = {
+            name: name,
+            title: title,
+            content: content
+        };
+        // goi ajax
+        $.ajax({
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            type: "POST",
+            data: JSON.stringify(newBlog),
+            //tên API
+            url: "/blogs",
+            //xử lý khi thành công
+            success: successHandler
+        });
+        //chặn sự kiện mặc định của thẻ
+        event.preventDefault();
+    }
+
+    function successHandler() {
+        $.ajax({
+            type: "GET",
+            //tên API
+            url: "/blogs",
+            //xử lý khi thành công
+            success: function (data) {
+                // hien thi danh sach o day
+                let content = '    <tr>\n' +
+                    '        <td>Name</td>\n' +
+                    '        <td>Title</td>\n' +
+                    '        <td>Content</td>\n' +
+                    '        <td>Update</td>\n' +
+                    '        <td>Delete</td>\n' +
+                    '    </tr>';
+                for (let i = 0; i < data.length; i++) {
+                    content += getBlog(data[i]);
+                }
+                document.getElementById('blogList').innerHTML = content;
+            }
+        });
+
+    }
+
+    function getBlog(blog) {
+        return `<tr>`+
+            `<td ><input id="producerSM" value="${blog.name}"/></td>`+
+            `<td ><input id="modelSM" value="${blog.title}" /></td>` +
+            `<td ><input id="priceSM" value="${blog.content}"/></td>` +
+            `<td><a class="updateBlog" href="${blog.id}" data-bs-toggle="modal"
+                       data-bs-target="#exampleModal">Update</a></td>` +
+            `<td><a class="deleteBlog" href="${blog.id}">Delete</a></td>`+
+            `</tr>`;
+    }
+
+    $(document).ready(function () {
+        //sư kiện nào thực hiện Ajax
+        $('#blogList').on("click",".deleteSmartphone",function (event) {
+            event.preventDefault();
+            //lay du lieu
+
+            let a = $(this);
+            let blogId = a.attr("href");
+            // goi ajax
+            $.ajax({
+                type: "DELETE",
+                //tên API
+                url: `/blogs/${blogId}`,
+                //xử lý khi thành công
+                success: function (data) {
+                    a.parent().parent().remove();
+                }
+
+            });
+            //chặn sự kiện mặc định của thẻ
+
+        });
+
+        $('#addNew').click(function (event) {
+            event.preventDefault();
+            let name = $('#name').val();
+            let title = $('#title').val();
+            let content = $('#content').val();
+            let newBlog = {
+                name: name,
+                title: title,
+                content: content
+            };
+            $.ajax({
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                type: "POST",
+                data: JSON.stringify(newBlog),
+                //tên API
+                url: "/blogs",
+                //xử lý khi thành công
+                // success: successHandler,
+                complete: successHandler,
+            });
+
+        })
+
+        $('#blogList').on("click",".updateBlog",function (event) {
+            event.preventDefault();
+            let a = $(this);
+            let blogId = a.attr("href");
+            $.ajax({
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                type: "GET",
+                //tên API
+                url: `/blogs/find/${blogId}`,
+                //xử lý khi thành công
+                success: function (data) {
+                    $("#updateName").val(data.name);
+                    $("#updateTitle").val(data.title);
+                    $("#updateContent").val(data.content);
+                    $("#id").val(data.id);
+                }
+            });
+
+        })
+
+        $("#updateBlog").click(function (event) {
+            event.preventDefault();
+            let name = $('#updateName').val();
+            let title = $('#updateTitle').val();
+            let content = $('#updateContent').val();
+            let id = $('#id').val();
+            let updateBlog = {
+                id:id,
+                name: name,
+                title: title,
+                content: content
+            };
+            $.ajax({
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                type: "PUT",
+                data: JSON.stringify(updateBlog),
+                //tên API
+                url: "/blogs/update",
+                //xử lý khi thành công
+                // success: successHandler,
+                complete: successHandler,
+            });
+        })
+    })
+</script>
+</body>
+</html>

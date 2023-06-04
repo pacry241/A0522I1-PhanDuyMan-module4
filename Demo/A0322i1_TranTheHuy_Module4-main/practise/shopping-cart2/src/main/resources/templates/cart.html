@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="/layout :: head">
+</head>
+<body>
+<header th:replace="/layout :: header_nav"></header>
+<div class="main-wrapper " style="margin-top: 59px;">
+    <div class="container" th:if="${cart !=null && cart.getProducts().size() > 0}">
+        <h1>Your Cart</h1>
+        <form th:action="@{/buy}" th:object="${cart}" method="post">
+            <h3>Total Items: <span th:text="${cart.countItemQuantity()}"></span></h3>
+            <h3>Total Products: <span th:text="${cart.countProductQuantity()}"></span></h3>
+            <table class="table" border="1">
+                <tr>
+                    <th>Item</th>
+                    <th>Description</th>
+                    <th>Image</th>
+                    <th>Quantity</th>
+                    <th>Old Price</th>
+                    <th>Price</th>
+                    <th>Action</th>
+                </tr>
+                <tr th:each="product: ${cart.products}">
+                    <td th:text="${product.getKey().name}"></td>
+                    <td th:text="${product.getKey().description}"></td>
+                    <td style="height: 150px">
+                        <img th:src="@{${product.getKey().imageURL}}" class="img-fluid" style="height: 100%"/>
+                    </td>
+                    <td class="d-flex">
+                        <a class="btn btn-sm" id="decrease_button" th:href="@{/minus/__${product.getKey().id}__(action='show')}"
+                           th:text="${'-'}"></a>
+                        <span class="d-block mx-2 fs-3" th:text="${product.getValue()}"></span>
+                        <a class="btn btn-sm" id="increase_button" th:href="@{/add/__${product.getKey().id}__(action='show')}"
+                           th:text="${'+'}"></a>
+                    </td>
+                    <td th:text="${product.getKey().price}"></td>
+                    <td >
+                        <a class="btn btn-danger" th:href="@{/delete/__${product.getKey().id}__(action='show')}"
+                           th:text="${'delete'}"></a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Total</td>
+                    <td></td>
+                    <td th:text="${cart.countTotalPayment()}"></td>
+                </tr>
+            </table>
+            <button class="btn btn-danger" type="submit">Buy now</button>
+        </form>
+    </div>
+    <div class="container" th:if="${cart == null || cart.getProducts().size() ==0}">
+        <strong>Cart Empty</strong>
+    </div>
+</div>
+<footer th:replace="/layout :: footer"></footer>
+</body>
+<th:block th:replace="/layout :: script"></th:block>
+</html>

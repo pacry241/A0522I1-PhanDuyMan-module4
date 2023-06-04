@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Music list</title>
+</head>
+<body>
+<h1>Music list</h1>
+<!--<form method="GET" th:action="@{/music/search}" >-->
+<!--    <label>Search by Name: </label>-->
+<!--    <input type="text" name="txtSearch"/>-->
+<!--    <input name="action" type="hidden" value="findName"/>-->
+<!--    <input type="submit" value="Search"/>-->
+<!--</form>-->
+<th:if test="${error != null}">
+    <h2 style="color: red">${error}</h2>
+</th:if>
+<a th:href="@{/music/create}">Add new music</a>
+<table border="1">
+    <tr>
+        <th>No</th>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Singer</th>
+        <th>Genre</th>
+        <th>Url</th>
+        <th>Detail</th>
+        <th>Update</th>
+        <th>Delete</th>
+    </tr>
+        <tr th:each="music : ${musics}">
+            <td th:>01</td>
+            <td th:text="${music.getId()}"></td>
+            <td th:text="${music.getName()}"> </td>
+            <td th:text="${music.getSinger()()}"></td>
+            <td th:text="${music.getGenre()}"></td>
+            <td th:text="${music.getUrl()()}"></td>
+            <td><a th:href="@{/product/{id}/detail(id=${music.getId()})}">Detail</a></td>
+            <td><a th:href="@{/product/{id}/update(id=${music.getId()})}">Update</a></td>
+            <td><a th:href="@{/product/{id}/delete(id=${music.getId()})}">Delete</a></td>
+        </tr>
+</table>
+</body>
+</html>

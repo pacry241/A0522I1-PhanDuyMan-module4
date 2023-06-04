@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org"><head>
+    <meta charset="UTF-8">
+    <title>Product list</title>
+</head>
+<body>
+<strong style="color: green" th:text="${message}"></strong>
+<p th:if="${products.isEmpty()}" style="color:red">List Empty</p>
+
+<form action="/product/search">
+    <input type="text" name="kq">
+</form>
+<a href="/product/create">Add new Product</a>
+<table class="table" border="1" th:unless="${products.isEmpty()}">
+    <thead>
+    <tr>
+        <th>NO</th>
+        <th>Name</th>
+        <th>Price</th>
+        <th>Description</th>
+        <th>Manufacture</th>
+        <th>Edit</th>
+        <th>Delete</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="product, abc : ${products}">
+        <td th:text="${abc.count}">1</td>
+        <td th:text="${product.name" ></a></td>
+        <td th:text="${product.price}"></td>
+        <td th:text="${product.description}"></td>
+        <td th:text="${product.manufacture}"></td>
+        <td>
+            <a th:href="@{/product/update/{id}(id = ${product.id})}">Edit</a>
+        </td>
+        <td>
+            <a th:href="@{/product/delete/{id}(id = ${product.id})}">Delete</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</body>
+</html>
+

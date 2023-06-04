@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="vi">
+<head th:replace="/layout :: head">
+<body>
+
+<h1><span class="glyphicon glyphicon-home"></span>DANH SACH GIAO DICH</h1>
+<hr>
+<div class="container">
+    <a class="add" th:href="@{/create}"> <span class="glyphicon glyphicon-plus"></span>Thêm mới</a>
+</div>
+<div class="search">
+    <form th:action="@{/search}">
+        <input type="text" name="title"  placeholder="search title">
+        <select name="id">
+            <option value="">----</option>
+            <option
+                    th:each="row : ${type}"
+                    th:value="${row.idQuestionType}"
+                    th:text="${row.name}"
+            ></option>
+        </select>
+        <button type="submit">search</button>
+    </form>
+</div>
+<!--    table-->
+<div class="container-table">
+    <p>Customer List</p>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>Id </th>
+            <th>Title </th>
+            <th>Content </th>
+            <th>Answer </th>
+            <th>Question type</th>
+            <th>Status </th>
+            <th>Date create</th>
+            <th>Action</th>
+        </tr>
+        </thead>
+        <tbody th:each=" row,rowStat : ${list}">
+        <tr th:object="${row}">
+            <td th:text="*{id}"></td>
+            <td th:text="*{title}"></td>
+            <td th:text="*{content}"></td>
+            <td th:text="*{answer}"></td>
+            <td th:text="*{questionType.name}"></td>
+            <td th:text="*{status ? 'Online' : 'Offline'}"></td>
+            <td th:text="*{#dates.format(dateCreate, 'dd/MM/yyyy')}"></td>
+            <td>
+<!--                view-->
+                <a th:href="@{view/{id}(id=${row.id})}"
+                   class="btn btn-outline-danger">
+                    View
+                </a>
+<!--                edit-->
+                <a th:href="@{edit/{id}(id=${row.id})}"
+                   class="btn btn-outline-primary">
+                    Edit
+                </a>
+<!--                delete-->
+                <button type="button" th:onclick="deleteInfo([[${row.id}]],[[${row.title}]])"
+                        class="btn btn-outline-danger"
+                        data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    <!--                        icon delete-->
+                    Delete
+                </button>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<ul class="pagination justify-content-center">
+    <li class="page-item" th:each="i: ${#numbers.sequence(1,  list.totalPages)}">
+        <a class="page-link"
+           th:href="@{'/index'(page=${i - 1})}"
+           th:text="${i}">
+        </a>
+    </li>
+</ul>
+</div>
+
+<!-- Modal delete -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <form th:action="@{/delete}" method="get">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Thông báo</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <!--                gửi lên controller-->
+                <div class="modal-body">
+                    <input type="hidden" name="idDelete" id="idDelete">
+                    <span style="color: red"> BẠN CÓ MUỐN XOÁ </span> <span id="deleteName"> </span>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">ĐÓNG</button>
+                    <button type="submit" class="btn btn-primary">ĐỒNG Ý</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+</body>
+<script>
+    function deleteInfo(id, name) {
+        document.getElementById("idDelete").value = id;
+        document.getElementById("deleteName").innerText = name;
+    }
+</script>
+</html>

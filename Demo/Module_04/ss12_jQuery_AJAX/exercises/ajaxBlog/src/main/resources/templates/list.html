@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Blog list</title>
+</head>
+<body>
+<h1>Blog list</h1>
+
+<form method="GET" th:action="@{/blog/search}" >
+    <label>Search by name: </label>
+    <input type="text" name="txtSearch" placeholder="Name search"/>
+</form>
+
+    <form method="get" th:action="@{/blog/search2}">
+        <input type="text" name="idSearch" placeholder="Id search"/>
+        <input type="submit" value="Search"/>
+    </form>
+
+<p th:if ="${blogs.isEmpty()}" style="color: red">List Empty</p>
+<a th:href="@{/blog/create}">Add new blog</a>
+
+<table border="1" th:unless="${blogs.isEmpty()}">
+    <tr>
+        <th>No</th>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Title</th>
+        <th>Content</th>
+        <th>Category</th>
+        <th>Detail</th>
+        <th>Update</th>
+        <th>Delete</th>
+    </tr>
+        <tr th:each="blog, iStat : ${blogs}">
+            <td th:text="${iStat.count}"></td>
+            <td th:text="${blog.idBlog}"></td>
+            <td th:text="${blog.nameBlog}"></td>
+            <td th:text="${blog.getTitle()}"></td>
+            <td th:text="${blog.getContent()}"></td>
+            <td th:text="${blog.getCategory()}"></td>
+            <td><a th:href="@{/blog/detail/{id}(id = ${blog.idBlog})}">Detail</a></td>
+            <td><a th:href="@{/blog/update/{id}(id = ${blog.idBlog})}">Update</a>
+            <td><a th:href="@{/blog/delete/{id}(id = ${blog.idBlog})}">Delete</a></td>
+        </tr>
+</table>
+</body>
+</html>

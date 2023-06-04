@@ -1,5 +1,9 @@
 package com.example.customercs.service;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+
+import java.awt.print.Pageable;
 import java.util.List;
 
 public interface ICustomerService<T> {
@@ -12,4 +16,6 @@ public interface ICustomerService<T> {
     T findById(Long id);
 
     List<T> findAll();
+
+    Page<T> findAllWithPage(PageRequest pageRequest);
 }

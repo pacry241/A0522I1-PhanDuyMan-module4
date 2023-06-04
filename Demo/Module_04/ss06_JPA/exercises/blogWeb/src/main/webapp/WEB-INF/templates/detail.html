@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Product Detail</title>
+</head>
+<body>
+<h3><a th:href="@{/blog}">Go back to list</a></h3>
+<table border="1">
+    <tr>
+        <td>Author</td>
+        <td th:text="${blog.author}"></td>
+    </tr>
+    <tr>
+        <td>Description</td>
+        <td th:text="${blog.description}"></td>
+    </tr>
+</table>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Update Product</title>
+</head>
+<body>
+<h1>Edit Product</h1>
+<!--<th:if test="${error != null}">
+    <h2 style="color: red">${error}</h2>
+</th:if>-->
+
+<a th:action="@{/product/update}" th:href="@{/product}">Return List</a>
+<form th:object="${product}" method="post">
+    <table>
+        <tr>
+            <td>Name Product</td>
+            <td>
+                <input type="text" th:field="*{name}"/>
+            </td>
+        </tr>
+        <tr>
+            <td>Price</td>
+            <td>
+                <input type="text" th:field="*{price}"/>
+            </td>
+        </tr>
+        <tr>
+            <td>Description</td>
+            <td>
+                <input type="text" th:field="*{description}"/>
+            </td>
+        </tr>
+        <tr>
+            <td>Manufacture</td>
+            <td>
+                <input type="text" th:field="*{manufacture}"/>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <input type="reset" value="Reset" />
+            </td>
+            <td>
+                <input type="submit" value="Submit" />
+            </td>
+        </tr>
+    </table>
+    <input type="hidden" name="action" value="update" />
+    <!--<input type="hidden" name="id" value="${product.id}" />-->
+</form>
+</body>
+</html>

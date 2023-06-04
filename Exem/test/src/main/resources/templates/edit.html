@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <!-- Boostrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+</head>
+<body>
+<h1 style="text-align:center;color:green; margin-top: 20px">
+    Update Customer
+</h1>
+
+<!-- Input -->
+<div style="margin:30px">
+    <form th:action="@{/free/update}" th:object="${service}" method="post">
+        <input type="hidden" th:field="*{serviceId}">
+                <div class="form-group row">
+                    <label class="col-sm-3 col-form-label" for="nameService">Name Service:</label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" id="nameService"
+                               placeholder="Service Name" th:field="*{nameService}">
+                    </div>
+                </div>
+        <div class="form-group row">
+            <label class="col-sm-3 col-form-label" for="startDay">Start Day:</label>
+            <div class="col-sm-9">
+                <input type="date" class="form-control" id="startDay"
+                       placeholder="startDay" th:field="*{startDay}">
+            </div>
+            <div class="col-sm-3"></div>
+            <span class="col-sm-9" th:if="${#fields.hasErrors('startDay')}"
+                  th:errors="*{startDay}" style="color: red"></span>
+        </div>
+        <div class="form-group row">
+            <label class="col-sm-3 col-form-label" for="endDay">End Day:</label>
+            <div class="col-sm-9">
+                <input type="date" class="form-control" id="endDay" th:field="*{endDay}">
+            </div>
+            <div class="col-sm-3"></div>
+            <span class="col-sm-9" th:if="${#fields.hasErrors('endDay')}"
+                  th:errors="*{endDay}" style="color: red"></span>
+        </div>
+        <div class="form-group row">
+            <label class="col-sm-3 col-form-label" for="description">Description:</label>
+            <div class="col-sm-9">
+                <textarea rows="3" class="form-control" id="description"
+                          placeholder="Description" th:field="*{descriptionFree}"></textarea>
+            </div>
+            <div class="col-sm-3"></div>
+            <span class="col-sm-9" th:if="${#fields.hasErrors('descriptionFree')}"
+                  th:errors="*{descriptionFree}" style="color: red"></span>
+        </div>
+        <div class="form-group row">
+            <label class="col-sm-3 col-form-label" for="countDown">Count Down:</label>
+            <div class="col-sm-9">
+                <input type="text" rows="3" class="form-control" id="countDown"
+                          placeholder="countDown" th:field="*{countDown}"></input>
+            </div>
+            <div class="col-sm-3"></div>
+            <span class="col-sm-9" th:if="${#fields.hasErrors('countDown')}"
+                  th:errors="*{countDown}" style="color: red"></span>
+        </div>
+
+        <!--        <div class="form-group row">-->
+        <!--            <label class="col-sm-3 col-form-label">Gender:</label>-->
+        <!--            <div class="col-sm-9 mt-2">-->
+        <!--                <label class="mb-0 mr-3">-->
+        <!--                    <input type="radio" class="mr-1" name="gender"> Male-->
+        <!--                </label>-->
+        <!--                <label class="mb-0 mr-3">-->
+        <!--                    <input type="radio" class="mr-1" name="gender"> Female-->
+        <!--                </label>-->
+        <!--            </div>-->
+        <!--        </div>-->
+        <div class="form-group row">
+            <div class="col-sm-9 offset-sm-3">
+                <input type="submit" class="btn btn-primary" value="Submit">
+                <a role="button" class="btn btn-success" th:href="@{/free}">Return</a>
+            </div>
+        </div>
+    </form>
+</div>
+<!-- Input -->
+
+<!-- bottom boostrap -->
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct"
+        crossorigin="anonymous"></script>
+<!-- bottom boostrap -->
+</body>
+</html>

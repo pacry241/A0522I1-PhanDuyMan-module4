@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Update Blog</title>
+</head>
+<body>
+<h1>Edit Blog</h1>
+<th:if test="${error != null}">
+    <h2 style="color: red">${error}</h2>
+</th:if>
+
+<a th:href="@{/blog}">Return List</a>
+<form th:object="${blog}" method="post">
+    <input type="number" th:field="*{id}" hidden/>
+    <table>
+        <tr>
+            <td>Author Name</td>
+            <td>
+                <input type="text" th:field="*{author}"/>
+            </td>
+        </tr>
+        <tr>
+            <td>Description</td>
+            <td>
+                <input type="text" th:field="*{description}"/>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <input type="reset" value="Reset" />
+            </td>
+            <td>
+                <input type="submit" value="Submit" />
+            </td>
+        </tr>
+    </table>
+    <input type="hidden" name="action" value="update" />
+    <input type="hidden" name="id" value="${product.id}" />
+</form>
+</body>
+</html>

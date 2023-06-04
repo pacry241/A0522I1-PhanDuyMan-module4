@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Create New Customer</title>
+    <th:block th:replace="~{layout::top-bootstrap}"></th:block>
+    <style>
+        body {
+            color: #333;
+            background: #fafafa;
+            font-family: "Patua One", sans-serif;
+        }
+
+        .contact-form {
+            padding: 50px;
+        }
+
+        .contact-form h1 {
+            color: #19bc9d;
+            font-weight: bold;
+            margin: 0 0 15px;
+        }
+
+        .contact-form .form-control, .contact-form .btn {
+            min-height: 38px;
+            border-radius: 2px;
+        }
+
+        .contact-form .form-control:focus {
+            border-color: #19bc9d;
+        }
+
+        .contact-form .btn-primary, .contact-form .btn-primary:active {
+            color: #fff;
+            min-width: 150px;
+            font-size: 16px;
+            background: #19bc9d !important;
+            border: none;
+        }
+
+        .contact-form .btn-primary:hover {
+            background: #15a487 !important;
+        }
+
+        .contact-form .btn i {
+            margin-right: 5px;
+        }
+
+        .contact-form label {
+            opacity: 0.7;
+        }
+
+        .contact-form textarea {
+            resize: vertical;
+        }
+
+        .hint-text {
+            font-size: 15px;
+            padding-bottom: 20px;
+            opacity: 0.6;
+        }
+        .col-sm-3
+        {
+            padding-top: 0px !important;
+            padding-left: 3px !important;
+        }
+    </style>
+</head>
+<body>
+<!-- Header -->
+<th:block th:replace="~{layout::header-furama}"></th:block>
+<!-- Header -->
+
+<!-- Navbar -->
+<th:block th:replace="~{layout::navbar-furama}"></th:block>
+<!-- Navbar -->
+
+
+<!-- Body -->
+                                                                                            <div class="container-lg">
+    <div class="row">
+        <div class="col-md-10 mx-auto">
+            <div class="contact-form">
+                <h1>Create New Customer</h1>
+                <p class="hint-text">We are very pleased to receive your registration.</p>
+                <form action="#" th:action="@{/customer/save}" th:object="${customerDto}" method="post">
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                <label for="inputName">Name</label>
+                                <input th:field="*{customerName}" type="text" class="form-control" id="inputName">
+                                <!--                                <span th:if="${#fields.hasErrors('publishDate')}" th:errors="*{publishDate}" class="text-danger"></span>-->
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                <label for="inputEmail">Email</label>
+                                <input th:field="*{customerEmail}" type="email" class="form-control" id="inputEmail">
+                                <!--                                <span th:if="${#fields.hasErrors('publishDate')}" th:errors="*{publishDate}" class="text-danger"></span>-->
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                <label for="inputPhone">Phone</label>
+                                <input th:field="*{customerPhone}" type="text" class="form-control" id="inputPhone">
+                                <!--                                <span th:if="${#fields.hasErrors('publishDate')}" th:errors="*{publishDate}" class="text-danger"></span>-->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group d-flex">
+                            <div class="col-sm-3 pl-0" th:field="*{customerGender}">Gender</div>
+
+                            <div class="form-check col-sm-3">
+                                <input value="0" type="radio" class="form-check-input" id="flexRadioDefault1"
+                                       name="Male" checked>
+                                <label class="form-check-label" for="flexRadioDefault1">Male</label>
+                            </div>
+
+                            <div class="form-check col-sm-3">
+                                <input value="1" type="radio" class="form-check-input" id="flexRadioDefault2"
+                                       name="Female">
+                                <label class="form-check-label" for="flexRadioDefault2">Female</label>
+                            </div>
+
+                            <div class="form-check col-sm-3">
+                                <input value="2" type="radio" class="form-check-input" id="flexRadioDefault3"
+                                       name="LGBT">
+                                <label class="form-check-label" for="flexRadioDefault3">LGBT</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputIdCard">Identity Card</label>
+                        <input th:field="*{customerIdCard}" class="form-control" type="text" id="inputIdCard">
+                    </div>
+                    <div class="form-group">
+                        <label for="inputBirthDay">BirthDay</label>
+                        <input th:field="*{customerBirthDay}" class="form-control" type="date" id="inputBirthDay">
+                    </div>
+                    <div class="form-group">
+                        <label for="inputType">Type</label>
+                        <select id="inputType" class="form-control" th:field="*{customerTypeId}">
+                            <option th:each="type: ${customerType}"
+                                    th:text="${type.customerTypeName}" th:value="${type.customerTypeId}">
+                            </option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputAddress">Address</label>
+                        <textarea th:field="*{customerAddress}" class="form-control" id="inputAddress"
+                                  rows="3"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary"><i class="fa fa-paper-plane"></i> Send</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Body -->
+
+
+<!-- Footer -->
+<th:block th:replace="~{layout::footer-furama}"></th:block>
+<!-- Footer -->
+
+<th:block th:replace="~{layout::bot-bootstrap}"></th:block>
+</body>
+</html>

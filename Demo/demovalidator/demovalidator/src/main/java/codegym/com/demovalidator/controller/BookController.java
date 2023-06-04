@@ -51,6 +51,7 @@ public class BookController {
     public String create(@Validated @ModelAttribute("book") Book book, BindingResult bindingResult,
                          Model model) {
         bookValidator.validate(book, bindingResult);
+//        new Book().validate(book,bindingResult);
         if (bindingResult.hasErrors()) {
             model.addAttribute("categories", categoryRepository.findAll());
             return "book/create";

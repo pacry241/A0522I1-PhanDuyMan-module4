@@ -10,7 +10,7 @@ import javax.validation.constraints.*;
 
 @Entity
 @Table(name = "users")
-public class User  {
+public class User  implements Validator{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -39,6 +39,7 @@ public class User  {
     @NotEmpty
     @Column(name = "email")
     private String email;
+
 
     public User() {
     }
@@ -91,4 +92,13 @@ public class User  {
         this.email = email;
     }
 
+    @Override
+    public boolean supports(Class<?> clazz) {
+        return User.class.isAssignableFrom(clazz);
+    }
+
+    @Override
+    public void validate(Object target, Errors errors) {
+
+    }
 }

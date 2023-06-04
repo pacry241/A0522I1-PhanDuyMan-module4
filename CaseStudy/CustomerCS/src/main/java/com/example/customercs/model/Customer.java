@@ -1,34 +1,49 @@
 package com.example.customercs.model;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.validation.Errors;
+import org.springframework.validation.Validator;
+
 import javax.persistence.*;
+import javax.validation.constraints.*;
 import java.util.Date;
 
 @Entity
 @Table(name = "customers")
-public class Customer {
+public class Customer implements Validator {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long customerId;
 
     @Column(name = "customer_name", columnDefinition = "varchar(50)")
+    @NotBlank
+    @Size(min = 3, max = 50)
     private String customerName;
 
     @Column(name = "date_of_birth")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+//    @JsonManagedReference --tranh lap tham chieu 1-n, n-1
     private Date dateOfBirth;
 
     @Column(name = "gender")
     private Integer customerGender;
 
     @Column(name = "identity_card")
+    @NotBlank
     private String customerIdCard;
 
     @Column(name = "phong_number")
+    @NotBlank
+    @Pattern(regexp = "^(0?)(3[2-9]|5[6|8|9]|7[0|6-9]|8[0-6|8|9]|9[0-4|6-9])[0-9]{7}$")
     private String customerPhone;
 
     @Column(name = "email")
+    @Email(message = "Please enter a valid e-mail address")
     private String customerEmail;
 
     @Column(name = "address")
+    @Size(min = 5, max = 150)
     private String customerAddress;
 
     @ManyToOne
@@ -120,6 +135,27 @@ public class Customer {
 
     public void setCustomerType(CustomerType customerType) {
         this.customerType = customerType;
+    }
+
+    @Override
+    public boolean supports(Class<?> clazz) {
+        return Customer.class.isAssignableFrom(clazz);
+    }
+
+    @Override
+    public void validate(Object target, Errors errors) {
+        Customer customer = (Customer) target;
+        String name = customer.getCustomerName();
+        if (name.equals("THE DUC")){
+            errors.rejectValue("customerName","","Khong nhap THE Duc");
+        }
+
+        Date datePublish = customer.getDateOfBirth();
+        boolean a = datePublish.after(new Date());
+
+        if ( datePublish.after(new Date())) {
+            errors.rejectValue("dateOfBirth", "", "Ngày xuất bản không đúng");
+        }
     }
 }
 

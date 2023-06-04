@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <th:block th:replace="~{layout::top-bootstrap}"></th:block>
+</head>
+<body>
+<th:block th:replace ="~{layout::header-furama}"></th:block>
+<br>
+<h2 class="text-center"><a th:href="@{/contract/list}">Contract List</a></h2>
+<div class="notify">
+    <div th:if="${message}">
+        <h1  th:text="${message}" class="text-success text-center"></h1>
+    </div>
+</div>
+
+
+<nav class="navbar navbar-light bg-light">
+    <div>
+        <a type="button" class="btn btn-primary btn-lg" th:href="@{/contract/create}" disabled>Add New Contract</a>
+        <a type="button" class="btn btn-secondary btn-lg" th:href="@{/contract-detail/create}"  disabled>Add New Contract Detail</a>
+    </div>
+</nav>
+
+
+<div>
+    <table class="table table-striped mx-auto w-75">
+        <thead>
+        <tr class="table-warning">
+            <th>#</th>
+            <th>Start date</th>
+            <th>End date</th>
+            <th>Deposit</th>
+            <th>Total Money</th>
+            <th>Customer</th>
+            <th>Employee</th>
+            <th>Facility</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="contract,lopp : ${contractList}">
+            <td scope="row" th:text="${lopp.count}"></td>
+            <td th:text="${contract.contractStartDate}"></td>
+            <td th:text="${contract.contractEndDate}"></td>
+            <td th:text="${contract.contractDeposit}"></td>
+            <td th:text="${contract.contractTotalMoney}"></td>
+            <td th:text="${contract.customer.customerName}"></td>
+            <td th:text="${contract.employee.employeeName}"></td>
+            <td th:text="${contract.facility.facilityName}"></td>
+        </tr>
+        </tbody>
+    </table>
+
+
+    <div aria-label="..." class="w-25 mx-auto">
+        <div class="pagination justify-content-center">
+            <a th:if="${contractList.hasPrevious()}"
+               th:href="@{/contract/list(page=${contractList.number -1})}">
+                Previous
+            </a>
+            <span th:text="${contractList.number+1}"></span>
+            /
+            <span th:text="${contractList.totalPages}"></span>
+            <a th:if="${contractList.hasNext()}"
+               th:href="@{/contract/list(page=${contractList.number + 1})}">
+                Next
+            </a>
+        </div>
+    </div>
+
+    <script>
+        function deleteModal(id, name) {
+            document.getElementById("id-del").value = id;
+            document.getElementById("name").innerText = name;
+        }
+    </script>
+
+</div>
+<footer th:replace="~{layout :: footer}"></footer>
+<th:block th:replace="~{layout::bot-bootstrap}"></th:block>
+</body>
+</html>

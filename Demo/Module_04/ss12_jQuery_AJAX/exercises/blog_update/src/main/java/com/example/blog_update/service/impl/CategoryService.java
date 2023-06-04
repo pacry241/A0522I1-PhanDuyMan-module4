@@ -1,0 +1,24 @@
+package com.example.blog_update.service.impl;
+
+import com.example.blog_update.model.Category;
+import com.example.blog_update.repository.CategoryRepository;
+import com.example.blog_update.service.ICategoryService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+@Service
+public class CategoryService implements ICategoryService {
+
+    @Autowired
+    CategoryRepository categoryRepository;
+
+    @Override
+    public Iterable<Category> findAll() {
+        return categoryRepository.findAll();
+    }
+
+    @Override
+    public Category findById(int id) {
+        return categoryRepository.findById(id).get();
+    }
+}

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="vi">
+<head>
+    <title>Create</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        .register-form {
+            padding: 10px;
+            background-color: #f2f2f2;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-shadow: 2px 2px 5px #bbb;
+            width: 500px;
+            margin: 0 auto;
+        }
+
+        label {
+            display: block;
+            margin-top: 10px;
+        }
+
+        input[type="text"], input[type="date"] {
+            width: 100%;
+            padding: 5px;
+            font-size: 14px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-top: 5px;
+        }
+
+        input[type="submit"], input[type="reset"], button {
+            width: 100%;
+            padding: 5px;
+            font-size: 14px;
+            margin-top: 10px;
+            margin-bottom: 30px;
+            border-radius: 5px;
+            border: none;
+            background-color: dodgerblue;
+            color: white;
+            cursor: pointer;
+        }
+
+        input[type="reset"] {
+            background-color: #f44336;
+        }
+
+        .action-container {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .gender-container {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+        }
+
+        input[type="radio"] {
+            margin-right: 10px;
+        }
+
+        select {
+            width: 100%;
+            padding: 5px;
+            font-size: 14px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-top: 5px;
+        }
+
+        h2 {
+            text-align: center;
+        }
+
+    </style>
+</head>
+<body>
+<form class="register-form" th:action="@{/update}" method="post" th:object="${question}">
+    <h2>UPDATE  </h2>
+    <label hidden for="id">Id: </label>
+    <input type="text" id="id" name="id" th:field="*{id}" hidden>
+    <span th:if="${#fields.hasErrors('id')}" th:errors="*{id}"></span>
+
+    <label for="id">title:</label>
+    <input type="text" th:field="*{title}">
+    <span th:if="${#fields.hasErrors('title')}" th:errors="*{title}"></span>
+
+    <label for="id">content:</label>
+    <input type="text" th:field="*{content}">
+    <span th:if="${#fields.hasErrors('content')}" th:errors="*{content}"></span>
+
+    <label for="id">answer:</label>
+    <input type="text" th:field="*{answer}">
+    <span th:if="${#fields.hasErrors('answer')}" th:errors="*{answer}"></span>
+
+    <label for="gender">Loai dịch vụ:</label>
+    <div class="gender-container">
+        <input type="radio" id="male" name="gender" th:field="*{status}" th:value="true">
+        <label for="male">Online</label>
+        <input type="radio" id="female" name="gender" th:field="*{status}" th:value="false">
+        <label for="female">Offline</label>
+    </div>
+
+    <label for="id">Question Type:</label>
+    <select th:field="*{questionType}">
+        <option
+                th:each="row : ${type}"
+                th:value="${row.idQuestionType}"
+                th:text="${row.name}"
+        ></option>
+    </select>
+
+    <label for="birthday">Date Create:</label>
+    <input type="date" id="birthday" name="birthday" th:field="*{dateCreate}">
+
+    <div class="action-container">
+        <input type="submit" value="Submit">
+    </div>
+</form>
+</body>
+</html>
+

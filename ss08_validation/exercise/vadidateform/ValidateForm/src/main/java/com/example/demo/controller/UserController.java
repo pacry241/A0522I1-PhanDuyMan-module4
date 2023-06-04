@@ -27,7 +27,7 @@ public class UserController {
 
     @PostMapping("/validateUser")
     public ModelAndView checkValidation(@Validated @ModelAttribute("user") User user, BindingResult bindingResult) {
-        if (bindingResult.hasFieldErrors()) {
+        if (bindingResult.hasErrors()) {
             return new ModelAndView("/index");
         } else {
             service.save(user);
